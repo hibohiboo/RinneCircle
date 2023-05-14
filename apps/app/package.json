@@ -19,6 +19,7 @@
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@acme/frontend-tesiting-book-unittest": "workspace:*",
     "@types/node": "^18.0.0",
     "@types/react": "latest",
     "autoprefixer": "^10.4.12",
