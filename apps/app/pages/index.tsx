@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react'
-import { Layout, Page, Text, List, Code } from '@vercel/examples-ui'
-import { Button } from '@acme/ui'
-import { matchingTextColor, randomColor } from '@acme/utils'
+import { useState, useEffect } from "react";
+import { Layout, Page, Text, List, Code } from "@vercel/examples-ui";
+import { Button } from "@acme/ui";
+import { Button as OtherButton } from "@acme/ui_components";
+import { matchingTextColor, randomColor } from "@acme/utils";
 
 export default function Index() {
-  const [bgColor, setBgColor] = useState('')
-  const [textColor, setTextColor] = useState('')
+  const [bgColor, setBgColor] = useState("");
+  const [textColor, setTextColor] = useState("");
   const changeColor = () => {
-    const bg = randomColor()
-    setBgColor(bg)
-    setTextColor(matchingTextColor(bg))
-  }
+    const bg = randomColor();
+    setBgColor(bg);
+    setTextColor(matchingTextColor(bg));
+  };
 
-  useEffect(changeColor, [])
+  useEffect(changeColor, []);
 
   return (
     <Page>
@@ -48,10 +49,11 @@ export default function Index() {
           >
             Change Color
           </Button>
+          <OtherButton primary={true} label="test" />
         </>
       )}
     </Page>
-  )
+  );
 }
 
-Index.Layout = Layout
+Index.Layout = Layout;

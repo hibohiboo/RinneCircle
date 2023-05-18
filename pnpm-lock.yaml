@@ -19,6 +19,9 @@ importers:
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@acme/ui_components':
+        specifier: workspace:*
+        version: link:../../packages/ui_components
       '@acme/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -65,7 +68,35 @@ importers:
 
   packages/frontend-tesiting-book-unittest: {}
 
-  packages/storybook:
+  packages/ui:
+    dependencies:
+      '@swc/helpers':
+        specifier: ^0.4.12
+        version: 0.4.14
+      clsx:
+        specifier: ^1.1.1
+        version: 1.2.1
+      next:
+        specifier: '*'
+        version: 0.1.0
+      react:
+        specifier: ^17.0.0 || ^18.0.0-0
+        version: 18.2.0
+      react-dom:
+        specifier: ^17.0.0 || ^18.0.0-0
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: latest
+        version: 18.2.6
+      eslint:
+        specifier: ^8.11.0
+        version: 8.28.0
+      typescript:
+        specifier: 4.8.4
+        version: 4.8.4
+
+  packages/ui_components:
     dependencies:
       react:
         specifier: ^18.2.0
@@ -134,34 +165,6 @@ importers:
       vite:
         specifier: ^4.3.8
         version: 4.3.8
-
-  packages/ui:
-    dependencies:
-      '@swc/helpers':
-        specifier: ^0.4.12
-        version: 0.4.14
-      clsx:
-        specifier: ^1.1.1
-        version: 1.2.1
-      next:
-        specifier: '*'
-        version: 0.1.0
-      react:
-        specifier: ^17.0.0 || ^18.0.0-0
-        version: 18.2.0
-      react-dom:
-        specifier: ^17.0.0 || ^18.0.0-0
-        version: 18.2.0(react@18.2.0)
-    devDependencies:
-      '@types/react':
-        specifier: latest
-        version: 18.2.6
-      eslint:
-        specifier: ^8.11.0
-        version: 8.28.0
-      typescript:
-        specifier: 4.8.4
-        version: 4.8.4
 
   packages/utils:
     devDependencies:
@@ -1718,9 +1721,9 @@ packages:
     dependencies:
       ajv: 6.12.6
       debug: 4.3.4
-      espree: 9.4.1
-      globals: 13.18.0
-      ignore: 5.2.0
+      espree: 9.5.2
+      globals: 13.20.0
+      ignore: 5.2.4
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -1838,7 +1841,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 20.2.0
+      '@types/node': 18.11.9
       '@types/yargs': 16.0.5
       chalk: 4.1.2
     dev: true
@@ -3261,10 +3264,6 @@ packages:
 
   /@types/node@18.11.9:
     resolution: {integrity: sha512-CRpX21/kGdzjOpFsZSkcrXMGIBWMGNIHXXBVFSH+ggkftxg+XYP20TESbh+zFvFj3EQOl5byk0HTRn1IL6hbqg==}
-    dev: true
-
-  /@types/node@20.2.0:
-    resolution: {integrity: sha512-3iD2jaCCziTx04uudpJKwe39QxXgSUnpxXSvRQjRvHPxFQfmfP4NXIm/NURVeNlTCc+ru4WqjYGTmpXrW9uMlw==}
     dev: true
 
   /@types/normalize-package-data@2.4.1:
@@ -5229,7 +5228,7 @@ packages:
     dependencies:
       acorn: 8.8.2
       acorn-jsx: 5.3.2(acorn@8.8.2)
-      eslint-visitor-keys: 3.3.0
+      eslint-visitor-keys: 3.4.1
     dev: true
 
   /espree@9.5.2:
@@ -6380,7 +6379,7 @@ packages:
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
       '@jest/types': 27.5.1
-      '@types/node': 20.2.0
+      '@types/node': 18.11.9
     dev: true
 
   /jest-regex-util@29.4.3:
@@ -7334,7 +7333,7 @@ packages:
       postcss: 8.4.19
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
-      resolve: 1.22.1
+      resolve: 1.22.2
     dev: true
 
   /postcss-js@4.0.0(postcss@8.4.19):

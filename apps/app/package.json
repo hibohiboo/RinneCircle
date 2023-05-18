@@ -13,6 +13,7 @@
   "dependencies": {
     "@acme/ui": "workspace:*",
     "@acme/utils": "workspace:*",
+    "@acme/ui_components": "workspace:*",
     "@vercel/examples-ui": "^1.0.4",
     "next": "canary",
     "react": "latest",
