@@ -1,5 +1,5 @@
 {
-  "ignoreCommand": "bash ./vercel-ignore-build-step.sh",
+  "ignoreCommand": "ls",
   "git": {
     "deploymentEnabled": {
       "develop": false,
