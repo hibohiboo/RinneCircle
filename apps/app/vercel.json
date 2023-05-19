@@ -1,5 +1,5 @@
 {
-  "ignoreCommand": "pnpm dlx turbo-ignore",
+  "ignoreCommand": "bash bin/vercel-ignore-build-step.sh",
   "git": {
     "deploymentEnabled": {
       "develop": false,
