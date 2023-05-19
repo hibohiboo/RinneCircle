@@ -1,5 +1,5 @@
 {
-  "ignoreCommand": "ls",
+  "ignoreCommand": "pnpm dlx turbo-ignore",
   "git": {
     "deploymentEnabled": {
       "develop": false,
