@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - develop
-      - id/382
+
     paths:
       - .github/workflows/**
       - docs/** # documentsフォルダ内が更新されたときに実施
@@ -85,6 +85,7 @@ jobs:
       - name: Build Storybook
         run: pnpm run build-storybook
         working-directory: packages/ui_components
+      # pnpmではpre,postは明示的に指定
       - name: move Storybook
         run: pnpm run postbuild-storybook
         working-directory: packages/ui_components
