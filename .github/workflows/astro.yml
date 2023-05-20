@@ -76,8 +76,10 @@ jobs:
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
 
-      # storybook 準備
+      # pnpmを使えるようにする
       - uses: pnpm/action-setup@v2.2.4
+
+      # storybook 準備
       - name: Install dependencies
         run: pnpm install
         working-directory: packages/ui_components
