@@ -1,3 +1,8 @@
+/**
+ * data-mounted=true,falseでtransformの値を変化させ、
+ * transition-duration で 動きをつける
+ * https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+**/
 .module {
   display: flex;
   justify-content: center;

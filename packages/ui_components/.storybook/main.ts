@@ -1,5 +1,13 @@
 import type { StorybookConfig } from "@storybook/react-vite";
-const config: StorybookConfig = {
+import path from "path";
+import { loadConfigFromFile, mergeConfig } from "vite";
+
+const configEnvServe = {
+  mode: "development",
+  command: "serve",
+  ssrBuild: false,
+} as const;
+const storybookConfig: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
@@ -13,5 +21,19 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  async viteFinal(config, { configType }) {
+    const f = await loadConfigFromFile(
+      configEnvServe,
+      path.resolve(__dirname, "../vite.config.ts"),
+    );
+    if (!f) return config;
+    const { config: userConfig } = f;
+
+    return mergeConfig(config, {
+      ...userConfig,
+      // manually specify plugins to avoid conflict
+      plugins: [],
+    });
+  },
 };
-export default config;
+export default storybookConfig;

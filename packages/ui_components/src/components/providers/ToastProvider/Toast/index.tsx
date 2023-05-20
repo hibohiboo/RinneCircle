@@ -25,11 +25,9 @@ export const Toast = ({ message, style }: Props) => {
       data-mounted={isMount}
     >
       {style === "succeed" ? (
-        // @ts-ignore
-        <Succeed role="presentation" />
+        <img src={Succeed} role="presentation" />
       ) : (
-        // @ts-ignore
-        <Failed role="presentation" />
+        <img src={Failed} role="presentation" />
       )}
       {message}
     </p>
