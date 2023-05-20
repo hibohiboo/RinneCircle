@@ -13,14 +13,12 @@
   "dependencies": {
     "@acme/ui": "workspace:*",
     "@acme/utils": "workspace:*",
-    "@acme/ui_components": "workspace:*",
     "@vercel/examples-ui": "^1.0.4",
     "next": "canary",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
-    "@acme/frontend-tesiting-book-unittest": "workspace:*",
     "@types/node": "^18.0.0",
     "@types/react": "latest",
     "autoprefixer": "^10.4.12",

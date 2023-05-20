@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Layout, Page, Text, List, Code } from "@vercel/examples-ui";
 import { Button } from "@acme/ui";
-import { Button as OtherButton } from "@acme/ui_components";
 import { matchingTextColor, randomColor } from "@acme/utils";
 
 export default function Index() {
@@ -49,7 +48,6 @@ export default function Index() {
           >
             Change Color
           </Button>
-          <OtherButton primary={true} label="test" />
         </>
       )}
     </Page>

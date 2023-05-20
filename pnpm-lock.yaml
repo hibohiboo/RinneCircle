@@ -19,9 +19,6 @@ importers:
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@acme/ui_components':
-        specifier: workspace:*
-        version: link:../../packages/ui_components
       '@acme/utils':
         specifier: workspace:*
         version: link:../../packages/utils
@@ -38,9 +35,6 @@ importers:
         specifier: latest
         version: 18.2.0(react@18.2.0)
     devDependencies:
-      '@acme/frontend-tesiting-book-unittest':
-        specifier: workspace:*
-        version: link:../../packages/frontend-tesiting-book-unittest
       '@types/node':
         specifier: ^18.0.0
         version: 18.11.9
@@ -111,8 +105,6 @@ importers:
       vite:
         specifier: ^4.3.8
         version: 4.3.8
-
-  packages/frontend-tesiting-book-unittest: {}
 
   packages/ui:
     dependencies:
