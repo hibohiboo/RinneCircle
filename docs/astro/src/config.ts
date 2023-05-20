@@ -28,8 +28,8 @@ export const KNOWN_LANGUAGES = {
 } as const;
 export const KNOWN_LANGUAGE_CODES = Object.values(KNOWN_LANGUAGES);
 
-export const GITHUB_EDIT_URL = `https://github.com/hibohiboo/rinne-circle/tree/main/docs`;
-export const BASE_PATH = "rinne-circle";
+export const GITHUB_EDIT_URL = `https://github.com/hibohiboo/RinnneCircle/tree/main/docs`;
+export const BASE_PATH = "RinnneCircle";
 
 export type Sidebar = Record<
   (typeof KNOWN_LANGUAGE_CODES)[number],
