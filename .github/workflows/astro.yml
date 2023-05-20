@@ -75,6 +75,20 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+
+      # storybook 準備
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: packages/ui_components
+
+      # storybook ビルド -> astro の publicフォルダ内
+      - name: Build Storybook
+        run: pnpm run build-storybook
+        working-directory: packages/ui_components
+
+
+
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

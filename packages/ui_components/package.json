@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "postbuild-storybook": "mv ./storybook-static ../../docs/astro/public",
     "clean": "rm -rf .turbo",
     "test": "jest --config ./jest.config.json"
   },

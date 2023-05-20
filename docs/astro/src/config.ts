@@ -40,6 +40,8 @@ export const SIDEBAR: Sidebar = {
     目次: [
       { text: "イントロダクション", link: `${BASE_PATH}/ja/introduction` },
     ],
-    開発用: [],
+    開発用: [
+      { text: "StoryBook", link: `${BASE_PATH}/storybook-static/index.html` },
+    ],
   },
 };

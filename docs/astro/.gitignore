@@ -30,3 +30,5 @@ public/api-schema
 
 # typedoc
 public/typedoc
+
+public/storybook-static
