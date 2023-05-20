@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.1",
     "@types/node": "20.2.1",
-    "aws-cdk": "2.79.1",
+    "aws-cdk": "2.80.0",
     "dotenv": "^16.0.3",
     "esbuild": "^0.17.19",
     "jest": "^29.5.0",
@@ -24,8 +24,8 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
-    "aws-cdk-lib": "2.79.1",
-    "constructs": "^10.2.28",
+    "aws-cdk-lib": "2.80.0",
+    "constructs": "^10.2.29",
     "source-map-support": "^0.5.21"
   }
 }
