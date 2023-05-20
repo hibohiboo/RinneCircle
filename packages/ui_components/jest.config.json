@@ -15,9 +15,11 @@
     "<rootDir>/"
   ],
   "moduleNameMapper": {
-    "\\.(css|less|scss)$": "identity-obj-proxy"
+    "\\.(css|less|scss)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "\\.(gif|ttf|eot|svg)$": "<rootDir>/tests/jest.fileMock.js"
   },
   "setupFilesAfterEnv": [
-    "./jest.setup.ts"
+    "./tests/jest.setup.ts"
   ]
 }
