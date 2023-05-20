@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    transpilePackages: ['@acme/ui'],
-  },
-}
+  transpilePackages: ["@acme/ui", "@acme/ui_components"],
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
