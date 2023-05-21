@@ -25,6 +25,7 @@
     "@storybook/addon-essentials": "7.0.12",
     "@storybook/addon-interactions": "7.0.12",
     "@storybook/addon-links": "7.0.12",
+    "@storybook/addon-viewport": "^7.0.12",
     "@storybook/blocks": "7.0.12",
     "@storybook/csf": "^0.1.0",
     "@storybook/jest": "^0.1.0",
