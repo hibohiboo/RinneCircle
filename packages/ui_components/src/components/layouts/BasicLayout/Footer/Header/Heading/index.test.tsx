@@ -18,7 +18,6 @@ const LocationDisplay = () => {
 };
 const regTopPath = new RegExp("^/$");
 test("クリックするとTOPへ遷移する", async () => {
-  // mockRouter.setCurrentUrl("/posts?page=1");
   render(
     <MemoryRouter initialEntries={["/posts?page=1"]}>
       <Heading />
