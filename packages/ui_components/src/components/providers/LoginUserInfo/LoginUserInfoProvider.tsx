@@ -1,7 +1,6 @@
-import { getMyProfile } from "@/services/client/MyProfile";
-import { GetMyProfileReturn } from "@/services/server/MyProfile";
 import { ReactNode, useEffect } from "react";
-
+import { getMyProfile } from "@/services/client/MyProfile";
+import type { GetMyProfileReturn } from "@/services/server/MyProfile";
 import {
   LoginUserInfoActionContext,
   LoginUserInfoStateContext,
@@ -17,9 +16,9 @@ export const LoginUserInfoProvider = ({
   defaultState?: AsyncState<GetMyProfileReturn>;
 }) => {
   const [profile, updateProfile] = useAsyncFn(getMyProfile, [], defaultState);
+
   useEffect(() => {
     updateProfile();
-    // eslint-disable-next-line
   }, []);
   return (
     <LoginUserInfoStateContext.Provider value={profile}>

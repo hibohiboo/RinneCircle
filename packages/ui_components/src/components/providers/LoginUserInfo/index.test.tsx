@@ -28,7 +28,7 @@ function setup() {
   render(
     <LoginUserInfoProvider>
       <TestComponent />
-    </LoginUserInfoProvider>
+    </LoginUserInfoProvider>,
   );
   return { getMyProfile };
 }
@@ -36,9 +36,9 @@ function setup() {
 describe("LoginUserInfo", () => {
   test("初回マウント時、ログインユーザー取得APIを呼ぶ", async () => {
     const { getMyProfile } = setup();
-    await waitFor(() =>
-      expect(screen.getByTestId("name")).toHaveTextContent("TaroYamada")
-    );
+    await waitFor(() => {
+      expect(screen.getByTestId("name")).toHaveTextContent("TaroYamada");
+    });
     expect(getMyProfile).toHaveBeenCalledTimes(1);
   });
 
