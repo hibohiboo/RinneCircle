@@ -5,7 +5,7 @@
 // does not automatically invoke the function
 // and it can take arguments.
 
-import { act, renderHook } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import useAsyncFn, { AsyncState } from "./useAsyncFn";
 
 type AdderFn = (a?: number, b?: number) => Promise<number>;
@@ -23,7 +23,7 @@ describe("useAsyncFn", () => {
 
     beforeEach(() => {
       // NOTE: renderHook isn't good at inferring array types
-      hook = renderHook<{ fn: AdderFn }, [AsyncState<number>, AdderFn]>(
+      hook = renderHook<[AsyncState<number>, AdderFn], { fn: AdderFn }>(
         ({ fn }) => useAsyncFn(fn),
         {
           initialProps: { fn: adder },
@@ -89,14 +89,15 @@ describe("useAsyncFn", () => {
           callback(2, 7);
         });
         hook.rerender({ fn: adder });
-        await hook.waitForNextUpdate();
-
-        const [state] = hook.result.current;
-
-        expect(callCount).toEqual(1);
-        expect(state.loading).toEqual(false);
-        expect(state.error).toEqual(undefined);
-        expect(state.value).toEqual(9);
+        await waitFor(() => {
+          expect(callCount).toEqual(1);
+        });
+        await waitFor(() => {
+          const [state] = hook.result.current;
+          expect(state.loading).toEqual(false);
+          expect(state.error).toEqual(undefined);
+          expect(state.value).toEqual(9);
+        });
       });
     });
   });
@@ -133,8 +134,9 @@ describe("useAsyncFn", () => {
       queuedPromises[1].resolve();
       queuedPromises[0].resolve();
     });
-    await hook.waitForNextUpdate();
-    expect(hook.result.current[0]).toEqual({ loading: false, value: 2 });
+    await waitFor(() => {
+      expect(hook.result.current[0]).toEqual({ loading: false, value: 2 });
+    });
   });
 
   it("should keeping value of initialState when loading", async () => {
@@ -142,8 +144,8 @@ describe("useAsyncFn", () => {
     const initialState = { loading: false, value: "init state" };
 
     const hook = renderHook<
-      { fn: () => Promise<string> },
-      [AsyncState<string>, () => Promise<string>]
+      [AsyncState<string>, () => Promise<string>],
+      { fn: () => Promise<string> }
     >(({ fn }) => useAsyncFn(fn, [fn], initialState), {
       initialProps: { fn: fetch },
     });
@@ -159,8 +161,9 @@ describe("useAsyncFn", () => {
     expect(hook.result.current[0].loading).toBe(true);
     expect(hook.result.current[0].value).toBe("init state");
 
-    await hook.waitForNextUpdate();
-    expect(hook.result.current[0].loading).toBe(false);
-    expect(hook.result.current[0].value).toBe("new state");
+    waitFor(() => {
+      expect(hook.result.current[0].loading).toBe(false);
+      expect(hook.result.current[0].value).toBe("new state");
+    });
   });
 });
