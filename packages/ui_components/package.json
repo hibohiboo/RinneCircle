@@ -26,6 +26,7 @@
     "@storybook/addon-interactions": "7.0.12",
     "@storybook/addon-links": "7.0.12",
     "@storybook/blocks": "7.0.12",
+    "@storybook/csf": "^0.1.0",
     "@storybook/jest": "^0.1.0",
     "@storybook/react": "7.0.12",
     "@storybook/react-vite": "7.0.12",

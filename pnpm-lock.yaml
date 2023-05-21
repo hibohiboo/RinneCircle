@@ -164,6 +164,9 @@ importers:
       '@storybook/blocks':
         specifier: 7.0.12
         version: 7.0.12(react-dom@18.2.0)(react@18.2.0)
+      '@storybook/csf':
+        specifier: ^0.1.0
+        version: 0.1.0
       '@storybook/jest':
         specifier: ^0.1.0
         version: 0.1.0
