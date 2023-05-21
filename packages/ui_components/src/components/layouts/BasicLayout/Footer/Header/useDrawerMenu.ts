@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
+import useClickAway from "@/utility/react-use/useClickAway";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useClickAway } from "react-use";
+import { useLocation } from "react-router-dom";
 
 export function useDrawerMenu() {
   const [isOpen, setIsOpen] = useState(true);
@@ -15,9 +15,9 @@ export function useDrawerMenu() {
     if (!isOpen) return;
     handleCloseMenu();
   });
-  const router = useRouter();
+  const location = useLocation();
   useEffect(() => {
     handleCloseMenu();
-  }, [handleCloseMenu, router.asPath]);
+  }, [handleCloseMenu, location.pathname]);
   return { menuRef, isOpen, handleCloseMenu, handleOpenMenu };
 }

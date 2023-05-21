@@ -1,13 +1,13 @@
 import { getMyProfile } from "@/services/client/MyProfile";
 import { GetMyProfileReturn } from "@/services/server/MyProfile";
 import { ReactNode, useEffect } from "react";
-import { useAsyncFn } from "react-use";
-import { AsyncState } from "react-use/lib/useAsyncFn";
 
 import {
   LoginUserInfoActionContext,
   LoginUserInfoStateContext,
 } from "./LoginUserInfoContext";
+import type { AsyncState } from "@/utility/react-use/useAsyncFn";
+import { useAsyncFn } from "@/utility/react-use";
 
 export const LoginUserInfoProvider = ({
   children,
