@@ -6,7 +6,7 @@ import { Heading } from "./";
 const user = userEvent.setup();
 
 test("[role=heading]", async () => {
-  render(<Heading />);
+  render(<Heading />, { wrapper: MemoryRouter });
   expect(
     screen.getByRole("heading", { name: "Tech Posts" }),
   ).toBeInTheDocument();
