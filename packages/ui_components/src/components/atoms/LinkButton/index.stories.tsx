@@ -1,9 +1,18 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Args, Meta, ReactRenderer, StoryObj } from "@storybook/react";
 import { LinkButton } from "./";
+import { PartialStoryFn } from "@storybook/csf";
+import { MemoryRouter } from "react-router-dom";
+
+const MemoryDecorator = (Story: PartialStoryFn<ReactRenderer, Args>) => (
+  <MemoryRouter>
+    <Story />
+  </MemoryRouter>
+);
 
 export default {
   component: LinkButton,
   args: { children: "送信する", href: "/", className: "hoge" },
+  decorators: [MemoryDecorator],
 } as Meta<typeof LinkButton>;
 
 type Story = StoryObj<typeof LinkButton>;
