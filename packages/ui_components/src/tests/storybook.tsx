@@ -3,17 +3,20 @@ import { LoginUserInfoProvider } from "@/components/providers/LoginUserInfo";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { Args, PartialStoryFn } from "@storybook/csf";
 import type { ReactRenderer } from "@storybook/react";
+import { MemoryRouter } from "react-router-dom";
 
 export const BasicLayoutDecorator = (
   Story: PartialStoryFn<ReactRenderer, Args>,
-) => BasicLayout(<Story />);
+) => <MemoryRouter>{BasicLayout(<Story />)}</MemoryRouter>;
 
 export const LoginUserInfoProviderDecorator = (
   Story: PartialStoryFn<ReactRenderer, Args>,
 ) => (
-  <LoginUserInfoProvider>
-    <Story />
-  </LoginUserInfoProvider>
+  <MemoryRouter>
+    <LoginUserInfoProvider>
+      <Story />
+    </LoginUserInfoProvider>
+  </MemoryRouter>
 );
 
 export const SPStory = {

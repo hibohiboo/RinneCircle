@@ -7,7 +7,7 @@ export const Heading = () => {
     <h1 className={styles.heading}>
       <Link to={`/`}>
         <span className={styles.icon}>
-          <Pen />
+          <img src={Pen} />
         </span>
         Tech Posts
       </Link>
