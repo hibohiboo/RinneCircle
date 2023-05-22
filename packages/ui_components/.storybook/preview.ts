@@ -1,4 +1,7 @@
 import type { Preview } from "@storybook/react";
+import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { initialize, mswDecorator } from "msw-storybook-addon";
+import { handleGetMyProfile } from "../src/services/client/MyProfile/__mock__/msw";
 
 const preview: Preview = {
   parameters: {
@@ -9,7 +12,14 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    viewport: {
+      viewports: INITIAL_VIEWPORTS,
+    },
+    msw: { handlers: [handleGetMyProfile()] },
   },
 };
 
 export default preview;
+export const decorators = [mswDecorator];
+
+initialize();
