@@ -35,5 +35,10 @@ const storybookConfig: StorybookConfig = {
       plugins: [],
     });
   },
+  staticDirs: ["../public"],
+  previewHead: (head) => `
+    ${head}
+    <link rel="stylesheet" href="styles/globals.css" />
+  `,
 };
 export default storybookConfig;
