@@ -16,8 +16,8 @@
     "ncu": "npx pnpm up"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
+    "eslint": "^8.41.0",
     "eslint-config-turbo": "latest",
-    "turbo": "^1.9.8"
+    "turbo": "^1.9.9"
   }
 }
