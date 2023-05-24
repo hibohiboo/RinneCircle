@@ -11,6 +11,15 @@ export function handleGetMyProfile(args?: {
     if (args?.status) {
       return res(ctx.status(args.status));
     }
+    if (location.hostname === "hibohiboo.github.io") {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          ...getMyProfileData,
+          imageUrl: `/RinneCircle/storybook-static/${getMyProfileData.imageUrl}`,
+        }),
+      );
+    }
     return res(ctx.status(200), ctx.json(getMyProfileData));
   });
 }
