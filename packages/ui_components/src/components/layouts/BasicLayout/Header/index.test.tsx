@@ -3,18 +3,13 @@ import { setupMockServer } from "@/tests/jest";
 import { composeStories } from "@storybook/react";
 import { render, screen, waitFor } from "@testing-library/react";
 import * as stories from "./index.stories";
-import { MemoryRouter } from "react-router-dom";
 
 const { NotLoggedIn } = composeStories(stories);
 const server = setupMockServer();
 
 test("[role=banner]", async () => {
   server.use(handleGetMyProfile({ status: 401 }));
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <NotLoggedIn />
-    </MemoryRouter>,
-  );
+  render(<NotLoggedIn />);
   await waitFor(() => {
     expect(screen.getByRole("banner")).toBeInTheDocument();
   });
@@ -22,11 +17,7 @@ test("[role=banner]", async () => {
 
 test("未ログインの場合、ログインボタンが表示される", async () => {
   server.use(handleGetMyProfile({ status: 401 }));
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <NotLoggedIn />
-    </MemoryRouter>,
-  );
+  render(<NotLoggedIn />);
   expect(
     screen.getByRole("heading", { name: "Tech Posts" }),
   ).toBeInTheDocument();
