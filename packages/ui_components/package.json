@@ -50,6 +50,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
+    "jest-html-reporters": "^3.1.4",
     "msw": "^1.2.1",
     "msw-storybook-addon": "^1.8.0",
     "prop-types": "15.8.1",

@@ -21,5 +21,15 @@
   },
   "setupFilesAfterEnv": [
     "./tests/jest.setup.ts"
+  ],
+  "reporters": [
+    "default",
+    [
+      "jest-html-reporters",
+      {
+        "publicPath": "__reports__",
+        "filename": "jest.html"
+      }
+    ]
   ]
 }
