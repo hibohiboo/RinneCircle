@@ -40,7 +40,7 @@ importers:
         version: 18.11.9
       '@types/react':
         specifier: latest
-        version: 18.2.6
+        version: 18.2.7
       autoprefixer:
         specifier: ^10.4.12
         version: 10.4.13(postcss@8.4.19)
@@ -126,7 +126,7 @@ importers:
     devDependencies:
       '@types/react':
         specifier: latest
-        version: 18.2.6
+        version: 18.2.7
       eslint:
         specifier: ^8.11.0
         version: 8.28.0
@@ -195,8 +195,8 @@ importers:
         specifier: ^29.5.1
         version: 29.5.1
       '@types/react':
-        specifier: ^18.2.6
-        version: 18.2.6
+        specifier: ^18.2.7
+        version: 18.2.7
       '@types/react-dom':
         specifier: ^18.2.4
         version: 18.2.4
@@ -212,6 +212,9 @@ importers:
       '@vitejs/plugin-react-swc':
         specifier: ^3.3.1
         version: 3.3.1(vite@4.3.8)
+      clsx:
+        specifier: ^1.1.1
+        version: 1.2.1
       eslint:
         specifier: ^8.41.0
         version: 8.41.0
@@ -5086,7 +5089,6 @@ packages:
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
     engines: {node: '>=6'}
-    dev: false
 
   /co@4.6.0:
     resolution: {integrity: sha512-QVb0dM5HvG+uaxitm8wONl7jltx8dqhfU33DcqtOZcLSVIKSDDLDi7+0LbAKiyI8hD9u42m2YxXSkMGWThaecQ==}
