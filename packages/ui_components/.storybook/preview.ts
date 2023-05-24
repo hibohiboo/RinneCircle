@@ -21,5 +21,12 @@ const preview: Preview = {
 
 export default preview;
 export const decorators = [mswDecorator];
-
-initialize();
+const options =
+  location.hostname !== "hibohiboo.github.io"
+    ? {}
+    : {
+        serviceWorker: {
+          url: "/RinneCircle/storybook-static/mockServiceWorker.js",
+        },
+      };
+initialize(options);
