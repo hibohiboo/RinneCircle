@@ -82,9 +82,10 @@ jobs:
         working-directory: packages/ui_components
 
       # mswがnicjServiceWorkerをみつけるのためにbaseを設定してあげる。
-      - name: Build Storybook
+      - name: pre Storybook
         run: pnpm run pre-build-storybook
         working-directory: packages/ui_components
+
       # storybook ビルド -> astro の publicフォルダ内
       - name: Build Storybook
         run: pnpm run build-storybook
