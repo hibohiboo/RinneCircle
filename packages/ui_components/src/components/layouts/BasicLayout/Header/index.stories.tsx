@@ -58,7 +58,7 @@ export const SPLoggedIn: Story = {
 };
 
 export const SPLoggedInOpenedMenu: Story = {
-  storyName: "SPレイアウトでドロワーメニューを開ける",
+  name: "SPレイアウトでドロワーメニューを開ける",
   parameters: {
     ...SPStory.parameters,
     screenshot: {
@@ -80,7 +80,7 @@ export const SPLoggedInOpenedMenu: Story = {
 };
 
 export const SPLoggedInClosedMenu: Story = {
-  storyName: "SPレイアウトでドロワーメニューを閉じれる",
+  name: "SPレイアウトでドロワーメニューを閉じれる",
   parameters: {
     ...SPStory.parameters,
     screenshot: {
@@ -103,7 +103,7 @@ export const SPLoggedInClosedMenu: Story = {
 };
 
 export const PCLoggedInNotHaveOpenMenu: Story = {
-  storyName: "PCレイアウトで「メニューを開く」は表示されない",
+  name: "PCレイアウトで「メニューを開く」は表示されない",
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await waitFor(() =>
