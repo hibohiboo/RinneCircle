@@ -9,6 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
+    "pre-build-storybook": "mv ./.storybook/_manager-head.html ./.storybook/manager-head.html",
     "build-storybook": "storybook build",
     "postbuild-storybook": "mv ./storybook-static ../../docs/astro/public",
     "clean": "rm -rf .turbo",
@@ -16,7 +17,6 @@
     "mv-jest-reports": "cp ./public/mockServiceWorker.js ../../docs/astro/public/ && mv ./__reports__ ../../docs/astro/public/jest-reports"
   },
   "dependencies": {
-    "clsx": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.11.2"
