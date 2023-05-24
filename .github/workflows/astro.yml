@@ -90,7 +90,15 @@ jobs:
         run: pnpm run postbuild-storybook
         working-directory: packages/ui_components
 
+      # jest reports 作成
+      - name: Jest Unit Test
+        run: pnpm run test
+        working-directory: packages/ui_components
+      - name: move jest report
+        run: pnpm run mv-jest-reports
+        working-directory: packages/ui_components
 
+      # ドキュメント作成
       - name: Build with Astro
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build \
