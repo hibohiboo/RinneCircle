@@ -12,11 +12,9 @@ export const BasicLayoutDecorator = (
 export const LoginUserInfoProviderDecorator = (
   Story: PartialStoryFn<ReactRenderer, Args>,
 ) => (
-  <MemoryRouter>
-    <LoginUserInfoProvider>
-      <Story />
-    </LoginUserInfoProvider>
-  </MemoryRouter>
+  <LoginUserInfoProvider>
+    <Story />
+  </LoginUserInfoProvider>
 );
 
 export const SPStory = {
