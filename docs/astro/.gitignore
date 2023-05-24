@@ -33,3 +33,4 @@ public/typedoc
 
 public/storybook-static
 public/jest-reports
+public/mockServiceWorker.js
