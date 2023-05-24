@@ -44,7 +44,7 @@ export const SIDEBAR: Sidebar = {
       { text: "StoryBook", link: `${BASE_PATH}/storybook-static/index.html` },
       {
         text: "Jestレポート - UIコンポーネント",
-        link: `${BASE_PATH}/jest-reports/index.html`,
+        link: `${BASE_PATH}/jest-reports/jest.html`,
       },
     ],
   },
