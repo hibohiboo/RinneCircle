@@ -6,10 +6,14 @@ import { Link } from "react-router-dom";
 
 export const PostItem = ({ post }: { post: GetPostsReturn["posts"][0] }) => {
   const titleId = useId();
+  const prefixImage =
+    location.hostname === "hibohiboo.github.io"
+      ? "/RinneCircle/storybook-static/"
+      : "";
   return (
     <li key={post.id} className={styles.item}>
       <Link to={`/posts/${post.id}`} aria-labelledby={titleId}>
-        <img src={post.imageUrl || ""} alt="" />
+        <img src={`${prefixImage}${post.imageUrl || ""}`} alt="" />
         <div className={styles.content}>
           <div className={styles.description}>
             <p className={styles.title} id={titleId}>
