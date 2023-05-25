@@ -7,3 +7,4 @@ layout: ../../layouts/MainLayout.astro
 **更新履歴**
 
 2023.05.25 Storybook に msw 導入
+2023.05.25 posts 追加
