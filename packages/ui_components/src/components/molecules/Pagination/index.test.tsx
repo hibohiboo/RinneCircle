@@ -1,8 +1,12 @@
 import { generatePagination } from "@/lib/util/pagination";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Pagination } from ".";
-import { MemoryRouter } from "react-router-dom";
+import {
+  MemoryRouter,
+  RouterProvider,
+  createMemoryRouter,
+} from "react-router-dom";
 
 const user = userEvent.setup();
 
@@ -47,10 +51,28 @@ test("カレント表記が変化する", async () => {
   assertHasCurrent("2");
 });
 
-// test("URL検索クエリーが変わる", async () => {
-//   mockRouter.setCurrentUrl("/posts?page=1");
-//   setup(1);
-//   expect(mockRouter).toMatchObject({ query: { page: "1" } });
-//   await clickLink("2");
-//   expect(mockRouter).toMatchObject({ query: { page: "2" } });
-// });
+test("URL検索クエリーが変わる", async () => {
+  const router = createMemoryRouter(
+    [
+      {
+        path: "/posts",
+        element: (
+          <Pagination
+            pathname={"/posts"}
+            pagination={generatePagination(1, 9)}
+          />
+        ),
+      },
+    ],
+    { initialEntries: ["/posts?page=1"] },
+  );
+
+  render(<RouterProvider router={router} />);
+  await waitFor(() => {
+    expect(router.state.location.search).toBe(`?page=1`);
+  });
+  await clickLink("2");
+  await waitFor(() => {
+    expect(router.state.location.search).toBe(`?page=2`);
+  });
+});

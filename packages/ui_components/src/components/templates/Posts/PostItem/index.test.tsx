@@ -48,6 +48,6 @@ test("リンクを押下すると画面遷移する", async () => {
   const click = () => user.click(link);
   await click();
   await waitFor(() => {
-    expect(router.state.location.pathname).toEqual(`/posts/${post.id}`);
+    expect(router.state.location.pathname).toBe(`/posts/${post.id}`);
   });
 });
