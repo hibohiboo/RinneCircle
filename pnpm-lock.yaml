@@ -145,6 +145,9 @@ importers:
       react-router-dom:
         specifier: ^6.11.2
         version: 6.11.2(react-dom@18.2.0)(react@18.2.0)
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
     devDependencies:
       '@storybook/addon-actions':
         specifier: ^7.0.17
