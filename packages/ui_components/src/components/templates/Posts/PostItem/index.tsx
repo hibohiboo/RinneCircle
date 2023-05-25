@@ -1,29 +1,27 @@
 import { GetPostsReturn } from "@/services/server/Posts";
-import Link from "next/link";
 import { useId } from "react";
 import Like from "./assets/like.svg";
 import styles from "./styles.module.css";
+import { Link } from "react-router-dom";
 
 export const PostItem = ({ post }: { post: GetPostsReturn["posts"][0] }) => {
   const titleId = useId();
   return (
     <li key={post.id} className={styles.item}>
-      <Link href={`/posts/${post.id}`} passHref legacyBehavior>
-        <a aria-labelledby={titleId}>
-          <img src={post.imageUrl || ""} alt="" />
-          <div className={styles.content}>
-            <div className={styles.description}>
-              <p className={styles.title} id={titleId}>
-                {post.title}
-              </p>
-              <p className={styles.authorName}>{post.authorName}</p>
-            </div>
-            <p className={styles.like}>
-              {post.likeCount}
-              <Like />
+      <Link to={`/posts/${post.id}`} aria-labelledby={titleId}>
+        <img src={post.imageUrl || ""} alt="" />
+        <div className={styles.content}>
+          <div className={styles.description}>
+            <p className={styles.title} id={titleId}>
+              {post.title}
             </p>
+            <p className={styles.authorName}>{post.authorName}</p>
           </div>
-        </a>
+          <p className={styles.like}>
+            {post.likeCount}
+            <img src={Like} />
+          </p>
+        </div>
       </Link>
     </li>
   );

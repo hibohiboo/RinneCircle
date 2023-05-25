@@ -10,5 +10,5 @@ export type GetPostsReturn = {
     end: number;
     hitCount: number;
   };
-  posts: any;
+  posts: Record<string, any>[];
 };

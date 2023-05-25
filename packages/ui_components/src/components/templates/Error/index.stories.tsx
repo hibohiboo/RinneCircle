@@ -6,7 +6,7 @@ import {
   UnauthorizedError,
 } from "@/lib/error";
 import { BasicLayoutDecorator, PCStory, SPStory } from "@/tests/storybook";
-import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Error } from "./";
 
 export default {
@@ -15,9 +15,9 @@ export default {
   parameters: {
     ...PCStory.parameters,
   },
-} as ComponentMeta<typeof Error>;
+} as Meta<typeof Error>;
 
-type Story = ComponentStoryObj<typeof Error>;
+type Story = StoryObj<typeof Error>;
 
 export const BadRequest: Story = {
   args: new BadRequestError().serialize(),

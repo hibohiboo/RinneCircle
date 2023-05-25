@@ -15,7 +15,7 @@ const messages = {
 export const Error = (props: Props) => {
   return (
     <div className={styles.module}>
-      <Caution />
+      <img src={Caution} />
       <p>{messages[props.status].message}</p>
     </div>
   );

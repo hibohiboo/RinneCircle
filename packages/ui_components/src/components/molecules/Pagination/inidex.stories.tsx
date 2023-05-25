@@ -1,10 +1,12 @@
 import { generatePagination } from "@/lib/util/pagination";
 import { Meta, StoryObj } from "@storybook/react";
 import { Pagination } from "./";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 export default {
   component: Pagination,
   args: { pathname: "/posts" },
+  decorators: [withRouter],
 } as Meta<typeof Pagination>;
 
 type Story = StoryObj<typeof Pagination>;
@@ -14,7 +16,9 @@ const getStory = (page: number) => ({
     pagination: generatePagination(page, 9),
   },
   parameters: {
-    nextRouter: { query: { page: `${page}` } },
+    reactRouter: {
+      searchParams: { page },
+    },
   },
 });
 
