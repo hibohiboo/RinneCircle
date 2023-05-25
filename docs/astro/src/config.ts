@@ -39,7 +39,7 @@ export const SIDEBAR: Sidebar = {
   ja: {
     目次: [
       { text: "イントロダクション", link: `${BASE_PATH}/ja/introduction` },
-      { text: "更新履歴", link: `${BASE_PATH}/ja/histroy` },
+      { text: "更新履歴", link: `${BASE_PATH}/ja/histry` },
     ],
     開発用: [
       { text: "StoryBook", link: `${BASE_PATH}/storybook-static/index.html` },
