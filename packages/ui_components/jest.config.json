@@ -17,7 +17,8 @@
   "moduleNameMapper": {
     "\\.(css|less|scss)$": "identity-obj-proxy",
     "^@/(.*)$": "<rootDir>/src/$1",
-    "\\.(gif|ttf|eot|svg)$": "<rootDir>/tests/jest.fileMock.js"
+    "\\.(gif|ttf|eot|svg)$": "<rootDir>/tests/jest.fileMock.js",
+    "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
   },
   "setupFilesAfterEnv": [
     "./tests/jest.setup.ts"
