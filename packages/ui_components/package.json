@@ -60,7 +60,7 @@
     "storybook-addon-react-router-v6": "^1.0.1",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.8",
+    "vite": "^4.3.9",
     "whatwg-fetch": "^3.6.2"
   },
   "exports": {
