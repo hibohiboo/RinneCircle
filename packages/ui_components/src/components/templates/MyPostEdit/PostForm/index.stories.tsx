@@ -51,9 +51,11 @@ export const SavePublish: Story = {
       canvas.getByRole("textbox", { name: "記事タイトル" }),
       "私の技術記事",
     );
-    await user.click(canvas.getByRole("switch", { name: "公開ステータス" }));
-    await expect(
-      canvas.getByRole("button", { name: "記事を公開する" }),
-    ).toBeInTheDocument();
+    await waitFor(() => {
+      user.click(canvas.getByRole("switch", { name: "公開ステータス" }));
+      expect(
+        canvas.getByRole("button", { name: "記事を公開する" }),
+      ).toBeInTheDocument();
+    });
   },
 };

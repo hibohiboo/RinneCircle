@@ -40,7 +40,7 @@ export const PostFormHeroImage = (props: Props) => {
           theme: props.error ? "error" : "dark",
           children: (
             <>
-              <ImageIcon />
+              <img src={ImageIcon} />
               <br />
               {props.error ? (
                 <span>{props.error}</span>
