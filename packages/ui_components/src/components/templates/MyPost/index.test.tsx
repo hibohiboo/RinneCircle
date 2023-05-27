@@ -3,12 +3,20 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 import { MyPost } from "./";
-import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import {
+  MemoryRouter,
+  RouterProvider,
+  createMemoryRouter,
+} from "react-router-dom";
 
 const user = userEvent.setup();
 
 test("見出しの表示", async () => {
-  render(<MyPost post={getMyPostData} />);
+  render(
+    <MemoryRouter>
+      <MyPost post={getMyPostData} />
+    </MemoryRouter>,
+  );
   expect(
     screen.getByRole("heading", { name: "Frontend Testing Example" }),
   ).toBeInTheDocument();
