@@ -18,11 +18,7 @@ export async function updateMyPost({
   }).then(handleResolve);
 }
 
-export async function deleteMyPost({
-  id,
-}: {
-  id: number;
-}): Promise<ApiMyPost.DeleteReturn> {
+export async function deleteMyPost({ id }: { id: number }): Promise<{}> {
   return fetch(path(`${id}`), {
     method: "DELETE",
     headers: defaultHeaders,

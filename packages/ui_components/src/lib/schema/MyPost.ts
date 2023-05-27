@@ -10,3 +10,4 @@ export const updateMyPostInputSchema = z.object({
     .nullable(),
 });
 export type UpdateMyPostInput = z.infer<typeof updateMyPostInputSchema>;
+export type PutInput = UpdateMyPostInput;

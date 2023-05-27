@@ -1,7 +1,7 @@
 import { WatchCounter } from "@/components/atoms/WatchCounter";
 import { TextareaWithInfo } from "@/components/molecules/TextareaWithInfo";
 import { TextboxWithInfo } from "@/components/molecules/TextboxWithInfo";
-import { PutInput } from "@/pages/api/my/posts/[postId]";
+
 import {
   Control,
   FieldErrors,
@@ -9,6 +9,7 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 import styles from "./styles.module.css";
+import { PutInput } from "@/lib/schema/MyPost";
 
 type Props<T extends FieldValues = PutInput> = {
   register: UseFormRegister<T>;
