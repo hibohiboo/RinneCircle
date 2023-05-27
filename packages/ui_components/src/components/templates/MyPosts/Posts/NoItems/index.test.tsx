@@ -26,7 +26,7 @@ test("リンク押下", async () => {
       { path: "/my/posts", element: <NoItems /> },
       { path: "/my/posts/create", element: <></> },
     ],
-    { initialEntries: ["/my/posts?page=1&status=public"] },
+    { initialEntries: ["/my/posts"] },
   );
   render(<RouterProvider router={router} />);
 
