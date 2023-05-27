@@ -40,10 +40,7 @@ test("staus?=private のアクセス場合「下書き」が選択されてい�
 test("公開ステータスを変更すると、status が変わる", async () => {
   // すでにある page=1 が消えていないこともあわせて検証
   const router = createMemoryRouter(
-    [
-      { path: "/my/posts", element: <Header /> },
-      { path: "/my/posts?page=1&status=private", element: <Header /> },
-    ],
+    [{ path: "/my/posts", element: <Header /> }],
     { initialEntries: ["/my/posts?page=1&status=public"] },
   );
   render(<RouterProvider router={router} />);

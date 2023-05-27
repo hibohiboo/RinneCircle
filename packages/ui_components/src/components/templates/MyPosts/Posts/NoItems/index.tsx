@@ -6,7 +6,7 @@ export const NoItems = () => {
     <div className={styles.noitems}>
       <h3 className={styles.heading}>投稿記事がありません</h3>
       <p>
-        <LinkButton href={"/my/posts/create"}>
+        <LinkButton to={"/my/posts/create"}>
           はじめての記事を書いてみましょう
         </LinkButton>
       </p>
