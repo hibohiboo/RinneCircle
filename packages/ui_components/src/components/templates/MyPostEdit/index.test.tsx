@@ -6,20 +6,14 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as stories from "./index.stories";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
+import { MyPostEdit } from ".";
+import { getMyPostData } from "@/services/server/MyPost/__mock__/fixture";
+import { BasicLayout } from "@/components/layouts/BasicLayout";
 
 const { Default } = composeStories(stories);
 const user = userEvent.setup();
 
-async function setup() {
-  const router = createMemoryRouter(
-    [
-      { path: "/my/posts/:id/edit", element: <Default /> },
-      { path: "/my/posts/:id/", element: <></> },
-    ],
-    { initialEntries: ["/my/posts/200/edits"] },
-  );
-  render(<RouterProvider router={router} />);
-
+function setupFunction() {
   async function clearTitle() {
     await user.clear(screen.getByRole("textbox", { name: "記事タイトル" }));
   }
@@ -43,10 +37,28 @@ async function setup() {
     saveAsDraft,
     deletePost,
     clickButton,
-    router,
   };
 }
 
+async function setup() {
+  render(<Default />);
+  return setupFunction();
+}
+async function setupRouter() {
+  const router = createMemoryRouter(
+    [
+      {
+        path: "/my/posts/:id/edit",
+        element: BasicLayout(<MyPostEdit post={getMyPostData} />),
+      },
+      { path: "/my/posts/:id/", element: <></> },
+    ],
+    { initialEntries: ["/my/posts/200/edit"] },
+  );
+  render(<RouterProvider router={router} />);
+  const functions = setupFunction();
+  return { router, ...functions };
+}
 const server = setupMockServer(...MyPost.handlers, ...MyProfile.handlers);
 
 describe("AlertDialog", () => {
@@ -110,7 +122,7 @@ describe("Toast", () => {
 
 describe("画面遷移", () => {
   test("公開に成功した場合、画面遷移する", async () => {
-    const { saveAsPublished, clickButton, router } = await setup();
+    const { saveAsPublished, clickButton, router } = await setupRouter();
     await saveAsPublished();
     await clickButton("はい");
     await waitFor(() =>
@@ -119,11 +131,11 @@ describe("画面遷移", () => {
   });
 
   test("削除に成功した場合、画面遷移する", async () => {
-    const { deletePost, clickButton, router } = await setup();
+    const { deletePost, clickButton, router } = await setupRouter();
     await deletePost();
     await clickButton("はい");
     await waitFor(() =>
-      expect(router.state.location.pathname).toBe(`/my/posts/`),
+      expect(router.state.location.pathname).toBe(`/my/posts`),
     );
   });
 });

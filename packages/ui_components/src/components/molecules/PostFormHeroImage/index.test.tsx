@@ -48,7 +48,11 @@ test("画像が選択されている時、ボタン表記は「イメージを�
 });
 
 test("画像選択でエラーがある時、ボタン表記はエラー文言になる", async () => {
-  render(<TestComponent error="エラー" />);
+  render(
+    <MemoryRouter>
+      <TestComponent error="エラー" />
+    </MemoryRouter>,
+  );
   expect(
     await screen.findByRole("button", { name: "エラー" }),
   ).toBeInTheDocument();
