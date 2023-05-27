@@ -4,9 +4,14 @@ import {
 } from "@/services/server/MyPosts/__mock__/fixture";
 import { render, screen } from "@testing-library/react";
 import { Posts } from "./";
+import { MemoryRouter } from "react-router-dom";
 
 const setup = (empty = false) => {
-  render(<Posts {...(empty ? getMyPostsEmptyData : getMyPostsData)} />);
+  render(
+    <MemoryRouter>
+      <Posts {...(empty ? getMyPostsEmptyData : getMyPostsData)} />
+    </MemoryRouter>,
+  );
   const PostList = screen.queryByRole("region", {
     name: "記事一覧",
   });
@@ -25,7 +30,7 @@ const setup = (empty = false) => {
 test("アクセシブルネーム「投稿記事一覧」で識別できる", async () => {
   setup();
   expect(
-    screen.getByRole("region", { name: "投稿記事一覧" })
+    screen.getByRole("region", { name: "投稿記事一覧" }),
   ).toBeInTheDocument();
 });
 

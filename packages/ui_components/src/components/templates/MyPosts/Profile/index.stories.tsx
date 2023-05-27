@@ -1,12 +1,12 @@
 import { getMyProfileData } from "@/services/server/MyProfile/__mock__/fixture";
-import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Profile } from "./";
 
 export default {
   component: Profile,
   args: getMyProfileData,
-} as ComponentMeta<typeof Profile>;
+} as Meta<typeof Profile>;
 
-type Story = ComponentStoryObj<typeof Profile>;
+type Story = StoryObj<typeof Profile>;
 
 export const Default: Story = {};

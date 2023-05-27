@@ -52,6 +52,7 @@ async function setupRouter() {
         element: BasicLayout(<MyPostEdit post={getMyPostData} />),
       },
       { path: "/my/posts/:id/", element: <></> },
+      { path: "/my/posts", element: <></> },
     ],
     { initialEntries: ["/my/posts/200/edit"] },
   );

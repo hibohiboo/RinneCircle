@@ -2,15 +2,15 @@ import {
   getMyPostsData,
   getMyPostsEmptyData,
 } from "@/services/server/MyPosts/__mock__/fixture";
-import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { Posts } from "./";
 
 export default {
   component: Posts,
   args: getMyPostsData,
-} as ComponentMeta<typeof Posts>;
+} as Meta<typeof Posts>;
 
-type Story = ComponentStoryObj<typeof Posts>;
+type Story = StoryObj<typeof Posts>;
 
 export const Default: Story = {};
 

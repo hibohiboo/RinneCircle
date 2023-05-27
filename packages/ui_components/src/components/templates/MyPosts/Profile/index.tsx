@@ -19,7 +19,7 @@ export const Profile = (props: Props) => {
             <Star /> {props.likeCount}
           </p>
           <p className={styles.bio}>{props.bio}</p>
-          <LinkButton href={`/my/profile/edit`}>変更する</LinkButton>
+          <LinkButton to={`/my/profile/edit`}>変更する</LinkButton>
         </div>
       </div>
       <Accounts

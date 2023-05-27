@@ -10,9 +10,12 @@ const PostList = ({ posts }: { posts: GetMyPostsReturn["posts"] }) => {
   return (
     <section aria-label="記事一覧">
       <ul className={styles.list}>
-        {posts.map((post) => (
-          <PostItem key={post.id} post={post} />
-        ))}
+        {
+          //@ts-ignore GetMyPostsReturn["posts"]がanyになってしまっている。TODO: 型解決ちゃんとする
+          posts.map((post) => (
+            <PostItem key={post.id} post={post} />
+          ))
+        }
       </ul>
     </section>
   );

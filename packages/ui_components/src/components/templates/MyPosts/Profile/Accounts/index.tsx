@@ -17,7 +17,7 @@ export const Accounts = (props: Props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <GitHub /> <span>{props.githubAccount}</span>
+            <img src={GitHub} /> <span>{props.githubAccount}</span>
           </a>
         </p>
       )}
@@ -28,7 +28,8 @@ export const Accounts = (props: Props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Twitter /> <span>{props.twitterAccount}</span>
+            <img src={Twitter} />
+            <span>{props.twitterAccount}</span>
           </a>
         </p>
       )}
