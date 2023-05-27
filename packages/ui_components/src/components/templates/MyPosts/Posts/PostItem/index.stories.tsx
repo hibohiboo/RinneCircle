@@ -1,5 +1,5 @@
 import { getMyPostsData } from "@/services/server/MyPosts/__mock__/fixture";
-import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react";
 import { PostItem } from "./";
 
 export default {
@@ -14,9 +14,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof PostItem>;
+} as Meta<typeof PostItem>;
 
-type Story = ComponentStoryObj<typeof PostItem>;
+type Story = StoryObj<typeof PostItem>;
 
 export const Default: Story = {
   args: { post: getMyPostsData.posts[0] },
