@@ -12,7 +12,7 @@ export function parseAsPositiveInt(q: string | string[] | undefined | null) {
   }
 }
 
-export function parseAsNonEmptyString(q: string | string[] | undefined) {
+export function parseAsNonEmptyString(q: string | string[] | undefined | null) {
   if (typeof q === "string" && q.length > 0) return q;
 }
 

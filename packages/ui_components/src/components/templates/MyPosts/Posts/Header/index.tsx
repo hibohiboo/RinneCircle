@@ -1,7 +1,7 @@
 import { SelectFilterOption } from "@/components/molecules/SelectFilterOption";
 import { parseAsNonEmptyString } from "@/lib/util";
-import { useRouter } from "next/router";
 import styles from "./styles.module.css";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const options = [
   { value: "all", label: "すべて" },
@@ -10,8 +10,10 @@ const options = [
 ];
 
 export const Header = () => {
-  const { query, push } = useRouter();
-  const defaultValue = parseAsNonEmptyString(query.status) || "all";
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const defaultValue =
+    parseAsNonEmptyString(searchParams.get("status")) || "all";
   return (
     <header className={styles.header}>
       <h2 className={styles.heading}>投稿記事一覧</h2>
@@ -22,7 +24,11 @@ export const Header = () => {
           defaultValue,
           onChange: (event) => {
             const status = event.target.value;
-            push({ query: { ...query, status } });
+            searchParams.set("status", status);
+            navigate({
+              pathname: `/my/posts`,
+              search: searchParams.toString(),
+            });
           },
         }}
       />
