@@ -17,12 +17,10 @@ test("見出しの表示", async () => {
 test("「編集する」リンクを押下すると、編集ページに遷移する", async () => {
   const router = createMemoryRouter(
     [
-      {
-        path: "/my/posts/1/edit",
-        element: <MyPost post={getMyPostData} />,
-      },
+      { path: "/my/posts/:id/", element: <MyPost post={getMyPostData} /> },
+      { path: "/my/posts/:id/edit", element: <></> },
     ],
-    { initialEntries: ["/my/posts/1/edit"] },
+    { initialEntries: ["/my/posts/1/"] },
   );
   render(<RouterProvider router={router} />);
   await user.click(screen.getByRole("link", { name: "編集する" }));
