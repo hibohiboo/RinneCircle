@@ -1,6 +1,7 @@
 import { getPagination } from "@/lib/util/pagination";
 import { CreateMyPostReturn, GetMyPostsReturn } from "../";
-
+const preImage =
+  location.hostname === "hibohiboo.github.io" ? "/RinnneCircle" : "";
 export const getMyPostsData: GetMyPostsReturn = {
   posts: [
     {
@@ -8,7 +9,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img01.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img01.jpg`,
       published: true,
       authorId: 1,
     },
@@ -17,7 +18,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img02.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img02.jpg`,
       published: true,
       authorId: 1,
     },
@@ -26,7 +27,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img03.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img03.jpg`,
       published: false,
       authorId: 1,
     },
@@ -35,7 +36,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img04.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img04.jpg`,
       published: true,
       authorId: 1,
     },
@@ -44,7 +45,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img05.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img05.jpg`,
       published: true,
       authorId: 1,
     },
@@ -53,7 +54,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img06.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img06.jpg`,
       published: true,
       authorId: 1,
     },
@@ -62,7 +63,7 @@ export const getMyPostsData: GetMyPostsReturn = {
       title: "Frontend Testing Example",
       description: "post example text.",
       body: "post example text.",
-      imageUrl: "/__mocks__/images/img07.jpg",
+      imageUrl: `${preImage}/__mocks__/images/img07.jpg`,
       published: true,
       authorId: 1,
     },
@@ -86,7 +87,7 @@ export const createMyPostsData: CreateMyPostReturn = {
   title: "Frontend Testing Example",
   description: "post example text.",
   body: "post example text.",
-  imageUrl: "/__mocks__/images/img01.jpg",
+  imageUrl: `${preImage}/__mocks__/images/img01.jpg`,
   published: true,
   authorId: 1,
 };
