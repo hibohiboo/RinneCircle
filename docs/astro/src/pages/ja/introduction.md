@@ -12,4 +12,5 @@ layout: ../../layouts/MainLayout.astro
 graph TD
 A[シナリオ] --> B[ソロジャーナル]
 B --> C[リプレイ]
+
 </pre>
