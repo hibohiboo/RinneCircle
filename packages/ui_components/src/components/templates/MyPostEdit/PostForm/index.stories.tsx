@@ -36,11 +36,12 @@ export const SucceedSaveAsDraft: Story = {
 export const FailedSaveAsDraft: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await user.click(canvas.getByRole("button", { name: "下書き保存する" }));
-    const textbox = canvas.getByRole("textbox", { name: "記事タイトル" });
-    await waitFor(() =>
-      expect(textbox).toHaveErrorMessage("1文字以上入力してください"),
-    );
+
+    await waitFor(async () => {
+      user.click(canvas.getByRole("button", { name: "下書き保存する" }));
+      const textbox = canvas.getByRole("textbox", { name: "記事タイトル" });
+      expect(textbox).toHaveErrorMessage("1文字以上入力してください");
+    });
   },
 };
 
