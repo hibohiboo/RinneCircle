@@ -1,6 +1,8 @@
 import { GetMyProfileReturn } from "../";
 const preImage =
-  location.hostname === "hibohiboo.github.io" ? "/RinneCircle" : "";
+  location.hostname === "hibohiboo.github.io"
+    ? "/RinneCircle/storybook-static"
+    : "";
 export const getMyProfileData: GetMyProfileReturn = {
   id: 1,
   name: "TaroYamada",

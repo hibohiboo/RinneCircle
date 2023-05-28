@@ -1,7 +1,9 @@
 import { getPagination } from "@/lib/util/pagination";
 import { CreateMyPostReturn, GetMyPostsReturn } from "../";
 const preImage =
-  location.hostname === "hibohiboo.github.io" ? "/RinneCircle" : "";
+  location.hostname === "hibohiboo.github.io"
+    ? "/RinneCircle/storybook-static"
+    : "";
 export const getMyPostsData: GetMyPostsReturn = {
   posts: [
     {
