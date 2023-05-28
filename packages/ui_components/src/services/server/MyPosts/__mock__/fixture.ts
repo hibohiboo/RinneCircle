@@ -1,7 +1,7 @@
 import { getPagination } from "@/lib/util/pagination";
 import { CreateMyPostReturn, GetMyPostsReturn } from "../";
 const preImage =
-  location.hostname === "hibohiboo.github.io" ? "/RinnneCircle" : "";
+  location.hostname === "hibohiboo.github.io" ? "/RinneCircle" : "";
 export const getMyPostsData: GetMyPostsReturn = {
   posts: [
     {

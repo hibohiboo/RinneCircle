@@ -1,7 +1,7 @@
 import { GetPostReturn } from "../";
 
 const preImage =
-  location.hostname === "hibohiboo.github.io" ? "/RinnneCircle" : "";
+  location.hostname === "hibohiboo.github.io" ? "/RinneCircle" : "";
 
 export const getPostData: GetPostReturn = {
   id: 1,
