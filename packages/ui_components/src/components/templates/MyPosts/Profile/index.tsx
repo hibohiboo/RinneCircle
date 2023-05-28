@@ -16,7 +16,7 @@ export const Profile = (props: Props) => {
         <div className={styles.info}>
           <p className={styles.name}>{props.name}</p>
           <p className={styles.likes}>
-            <Star /> {props.likeCount}
+            <img src={Star} /> {props.likeCount}
           </p>
           <p className={styles.bio}>{props.bio}</p>
           <LinkButton to={`/my/profile/edit`}>変更する</LinkButton>

@@ -1,6 +1,7 @@
 import { getMyPostsData } from "@/services/server/MyPosts/__mock__/fixture";
 import { Meta, StoryObj } from "@storybook/react";
 import { PostItem } from "./";
+import { withRouter } from "storybook-addon-react-router-v6";
 
 export default {
   component: PostItem,
@@ -14,6 +15,7 @@ export default {
       },
     },
   },
+  decorators: [withRouter],
 } as Meta<typeof PostItem>;
 
 type Story = StoryObj<typeof PostItem>;
