@@ -9,8 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "postbuild-storybook": "mv ./storybook-static ../../docs/astro/public/rinne-components",
+    "build-storybook": "storybook build -o ../../docs/astro/public/rinne-components",
     "clean": "rm -rf .turbo",
     "test": "jest --config ./jest.config.json",
     "mv-jest-reports": "cp ./public/mockServiceWorker.js ../../docs/astro/public/ && mv ./__reports__ ../../docs/astro/public/jest-reports"

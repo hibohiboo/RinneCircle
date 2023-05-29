@@ -42,9 +42,13 @@ export const SIDEBAR: Sidebar = {
       { text: "更新履歴", link: `${BASE_PATH}/ja/history` },
     ],
     開発用: [
-      { text: "StoryBook", link: `${BASE_PATH}/storybook-static/index.html` },
+      { text: "StoryBook", link: `${BASE_PATH}/rinne-components/index.html` },
       {
-        text: "Jestレポート - UIコンポーネント",
+        text: "Sample - StoryBook",
+        link: `${BASE_PATH}/storybook-static/index.html`,
+      },
+      {
+        text: "Sample - Jestレポート - UIコンポーネント",
         link: `${BASE_PATH}/jest-reports/jest.html`,
       },
     ],

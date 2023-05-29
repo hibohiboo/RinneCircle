@@ -1,15 +1,15 @@
 import { PCStory, SPStory } from "@/tests/storybook";
 import { Meta, StoryObj } from "@storybook/react";
-import { Top } from ".";
+import { RinneBuilderTop } from ".";
 
 export default {
-  component: Top,
+  component: RinneBuilderTop,
   parameters: {
     msw: { handlers: [] },
   },
-} as Meta<typeof Top>;
+} as Meta<typeof RinneBuilderTop>;
 
-type Story = StoryObj<typeof Top>;
+type Story = StoryObj<typeof RinneBuilderTop>;
 
 export const Default: Story = { ...PCStory };
 
