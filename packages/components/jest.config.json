@@ -1,0 +1,36 @@
+{
+  "testEnvironment": "jest-environment-jsdom",
+  "roots": [
+    "<rootDir>/src"
+  ],
+  "transform": {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  "testMatch": [
+    "**/__tests__/**/*.+(ts|tsx|js)",
+    "**/?(*.)+(spec|test).+(ts|tsx|js)"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "<rootDir>/"
+  ],
+  "moduleNameMapper": {
+    "\\.(css|less|scss)$": "identity-obj-proxy",
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "\\.(gif|ttf|eot|svg)$": "<rootDir>/tests/jest.fileMock.js",
+    "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
+  },
+  "setupFilesAfterEnv": [
+    "./tests/jest.setup.ts"
+  ],
+  "reporters": [
+    "default",
+    [
+      "jest-html-reporters",
+      {
+        "publicPath": "__reports__",
+        "filename": "jest.html"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,14 @@
+.module {
+  min-width: var(--pc-min-content-width);
+  display: flex;
+}
+
+@media screen and (max-width: 767px) {
+  .module {
+    display: block;
+    max-width: var(--sp-max-content-width);
+    min-width: var(--sp-min-content-width);
+    padding: var(--sp-inner-padding);
+  }
+
+}
