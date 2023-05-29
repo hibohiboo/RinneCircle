@@ -73,11 +73,11 @@ jobs:
       # pnpmを使えるようにする
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 8.5.1
+          version: 8.6.0
 
       # storybook 準備
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install
         working-directory: packages/ui_components
 
       # storybook ビルド -> astro の publicフォルダ内
