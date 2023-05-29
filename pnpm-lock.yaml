@@ -66,6 +66,9 @@ importers:
 
   apps/front:
     dependencies:
+      '@rinne-circle/components':
+        specifier: workspace:*
+        version: link:../../packages/components
       react:
         specifier: ^18.2.0
         version: 18.2.0
