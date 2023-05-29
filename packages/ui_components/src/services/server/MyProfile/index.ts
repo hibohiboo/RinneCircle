@@ -8,3 +8,6 @@ export interface GetMyProfileReturn {
   email?: string;
   likeCount?: number;
 }
+export async function getMyProfile() {
+  return {};
+}

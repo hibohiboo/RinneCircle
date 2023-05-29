@@ -82,13 +82,18 @@ jobs:
 
 
       # storybook ビルド -> astro の publicフォルダ内
-      - name: Build Storybook
+      - name: Build Sample Storybook
         run: pnpm run build-storybook
         working-directory: packages/ui_components
       # pnpmではpre,postは明示的に指定
-      - name: move Storybook
+      - name: move Sample Storybook
         run: pnpm run postbuild-storybook
         working-directory: packages/ui_components
+
+      # storybook ビルド -> astro の publicフォルダ内
+      - name: Build Rinne Cricle Storybook
+        run: pnpm run build-storybook
+        working-directory: packages/components
 
       # jest reports 作成
       - name: Jest Unit Test
