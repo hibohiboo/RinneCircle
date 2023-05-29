@@ -73,22 +73,29 @@ jobs:
       # pnpmを使えるようにする
       - uses: pnpm/action-setup@v2.2.4
         with:
-          version: 8.5.1
+          version: 8.6.0
 
       # storybook 準備
       - name: Install dependencies
         run: pnpm install
         working-directory: packages/ui_components
 
-
       # storybook ビルド -> astro の publicフォルダ内
-      - name: Build Storybook
+      - name: Build Sample Storybook
         run: pnpm run build-storybook
         working-directory: packages/ui_components
       # pnpmではpre,postは明示的に指定
-      - name: move Storybook
+      - name: move Sample Storybook
         run: pnpm run postbuild-storybook
         working-directory: packages/ui_components
+
+      # storybook ビルド -> astro の publicフォルダ内
+      - name: Install dependencies
+        run: pnpm install
+        working-directory: packages/components
+      - name: Build Rinne Cricle Storybook
+        run: pnpm run build-storybook
+        working-directory: packages/components
 
       # jest reports 作成
       - name: Jest Unit Test
@@ -105,10 +112,6 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
-
-
-
-
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1

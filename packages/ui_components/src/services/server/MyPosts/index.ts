@@ -23,6 +23,7 @@ export async function getMyPosts({
       }),
     ]);
     return {
+      //@ts-ignore  Binding element 'updatedAt' implicitly has an 'any' type.
       posts: data.map(({ createdAt, updatedAt, ...data }) => data),
       ...getPagination({
         take,

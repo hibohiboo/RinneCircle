@@ -12,3 +12,6 @@ export type GetPostsReturn = {
   };
   posts: Record<string, any>[];
 };
+export async function getPosts() {
+  return {};
+}
