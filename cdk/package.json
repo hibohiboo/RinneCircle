@@ -10,6 +10,7 @@
     "test": "jest",
     "prefront-deploy": "cd .. && pnpm run build-front",
     "front-deploy": "cdk -a \"npx ts-node --prefer-ts-exts bin/cdk.ts\" deploy --all --profile produser",
+    "cognito-deploy": "cdk -a \"npx ts-node --prefer-ts-exts bin/cognito.ts\" deploy --all --profile produser",
     "cdk": "cdk"
   },
   "devDependencies": {
@@ -24,8 +25,9 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
+    "@aws-cdk/aws-cognito-identitypool-alpha": "^2.81.0-alpha.0",
     "aws-cdk-lib": "2.81.0",
-    "constructs": "^10.2.36",
+    "constructs": "^10.2.37",
     "source-map-support": "^0.5.21"
   }
 }
