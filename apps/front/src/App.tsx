@@ -41,18 +41,16 @@ const isDevevelopServe = import.meta.env.MODE === "development"; // import.meta.
 const reportTo = isDevevelopServe ? console.log : sendToGoogleAnalytics;
 
 reportWebVitals(reportTo);
-
+const init = async () => {
+  const auth = getFirebaseAuth();
+  const response = await signInAnonymously(auth);
+  console.log(response);
+  console.log("user", response.user);
+  console.log("uid", response.user.uid);
+};
+void init();
 function App() {
-  useEffect(() => {
-    const init = async () => {
-      const auth = getFirebaseAuth();
-      const response = await signInAnonymously(auth);
-      console.log(response);
-      console.log("user", response.user);
-      console.log("uid", response.user.uid);
-    };
-    void init();
-  }, []);
+  useEffect(() => {}, []);
   return (
     <div
       style={{
