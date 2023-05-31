@@ -1,7 +1,7 @@
 ---
 title: RinneCircle 開発室 DB設計
 description: Docs intro
-layout: ../../layouts/MainLayout.astro
+layout: ../../../layouts/MainLayout.astro
 ---
 
 # DB 設計
