@@ -1,6 +1,6 @@
 ---
-title: RinneCircle 開発室 更新履歴
-description: histroy
+title: RinneCircle 開発室 リンク
+description: link
 layout: ../../layouts/MainLayout.astro
 ---
 
