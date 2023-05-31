@@ -9,6 +9,10 @@ import {
   Tags,
 } from "aws-cdk-lib";
 import { Construct } from "constructs";
+import {
+  IdentityPool,
+  UserPoolAuthenticationProvider,
+} from "@aws-cdk/aws-cognito-identitypool-alpha";
 
 interface Props extends StackProps {
   projectNameTag: string;
@@ -56,12 +60,28 @@ export class RinneCognitoStack extends Stack {
       generateSecret: false,
       idTokenValidity: Duration.minutes(5),
     });
-
+    const identityPool = new IdentityPool(
+      this,
+      `${props.projectNameTag}-IdentityPool`,
+      {
+        allowUnauthenticatedIdentities: true,
+        authenticationProviders: {
+          userPools: [
+            new UserPoolAuthenticationProvider({
+              userPool: userPool,
+              userPoolClient: userPoolClient,
+            }),
+          ],
+        },
+      },
+    );
     new CfnOutput(this, "UserPoolId", { value: userPool.userPoolId });
     new CfnOutput(this, "OutputClientId", {
       value: userPoolClient.userPoolClientId,
     });
-
+    new CfnOutput(this, "IdentityPoolId", {
+      value: identityPool.identityPoolId,
+    });
     Tags.of(this).add("Project", props.projectNameTag);
   }
 }
