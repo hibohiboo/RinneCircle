@@ -25,7 +25,7 @@ id は firebase auth の uid を基本的に使用。28 文字。
 
 ### RinneScenario シナリオ
 
-path は S3 へのパス。uid+createdAt `${uid}/scenario/${yyyy}/${mm}/${dd}`
+path は S3 へのパス。「ユーザ ID+作成日+シナリオ ID」 `${ユーザID}/scenario/${yyyy}/${mm}/${dd}/${シナリオID}`
 
 ### RinneSession セッション ※未作成
 
@@ -99,10 +99,10 @@ erDiagram
     Tag {
         name text PK
     }
-    RinneScenario ||--o{ RinneScenarioLimitTag: has
-    Tag ||--o{ RinneScenarioLimitTag: has
-    RinnePlayerCharacter ||--o{ RinnePlayerCharacterTag: has
-    RinnePlayerCharacterTag }o--|| Tag: has
+    RinneScenario o|--o{ RinneScenarioLimitTag: has
+    Tag ||--o{ RinneScenarioLimitTag: is
+    RinnePlayerCharacter o|--o{ RinnePlayerCharacterTag: has
+    RinnePlayerCharacterTag }o--|| Tag: is
     RinneSession  ||--o{ RinneSessionLog : has
     RinneScenario ||--o{ ScenarioRequire: has
 
