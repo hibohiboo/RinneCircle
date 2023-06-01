@@ -1,0 +1,14 @@
+{
+  "name": "spectaql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "spectaql config.yml"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "spectaql": "^2.0.9"
+  }
+}
