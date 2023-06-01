@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "spectaql config.yml"
+    "build": "spectaql config.yml -t ../astro/public/rinne-graphql"
   },
   "author": "",
   "license": "ISC",

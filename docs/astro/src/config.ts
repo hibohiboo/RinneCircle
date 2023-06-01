@@ -45,6 +45,7 @@ export const SIDEBAR: Sidebar = {
     ],
     開発用: [
       { text: "StoryBook", link: `${BASE_PATH}/rinne-components/index.html` },
+      { text: "GraphQL", link: `${BASE_PATH}/rinne-graphql/index.html` },
       {
         text: "Sample - StoryBook",
         link: `${BASE_PATH}/storybook-static/index.html`,
