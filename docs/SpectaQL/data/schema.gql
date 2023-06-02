@@ -1,207 +1,61 @@
-directive @spectaql(options: [SpectaQLOption]) on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+directive @spectaql(
+  options: [SpectaQLOption]
+) on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
 
-input SpectaQLOption { key: String!, value: String! }
+input SpectaQLOption {
+  key: String!
+  value: String!
+}
 
 "This is a `DateTime` scalar"
 scalar DateTime
 
-"This is a Phone"
-scalar PhoneNumber
-
-scalar URL @spectaql(options: [{key: "example", value: "https://work.com" }])
+scalar URL @spectaql(options: [{ key: "example", value: "https://work.com" }])
 scalar JSON
 scalar JSONObject
 scalar Void
-scalar Byte
-
-"Anything with an ID can be a node"
-interface Node {
-  "A unique identifier"
-  id: String!
-}
-
-"`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-type SimpleTypeOne implements Node @spectaql(options: [{key: "example", value: "{\"id\": \"123\", \"myType\":[{\"id\": \"myTypeId\", \"name\": \"myTypeName\"}]}" }, {key: "undocumented", value: "false" }]) {
-  id: String!
-  "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-  myType: [MyType!]!
-}
-
-type SimpleTypeTwo {
-  simpleTypeTwoFieldOne: String @spectaql(options: [{ key: "examples", value: "[\"42\", \"24\"]" }])
-  simpleTypeTwoFieldTwo: String @spectaql(options: [{ key: "example", value: "SomeIdValue" }])
-}
-
-"A Union of `SimpleTypeOne` and `SimpleTypeTwo`. `Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-union SimpleTypes =
-  SimpleTypeOne
-  | SimpleTypeTwo
-  | MyType
-
-
-"A simple Interface"
-interface MyInterface {
-  id: String!
-  name: String!
-}
-
-"`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) and [`myQuery`]({{Queries.myQuery}}) and [`myMutation`]({{Mutations.myMutation}}) are supported"
-type MyType implements MyInterface {
-  "I am an ID that will have my example value specified by the `@spectaql` directive"
-  id: String! @spectaql(options: [{key: "example", value: "\"idFromDirective\"" }]),
-  name: String!
-  url: URL,
-  json: JSON,
-  jso: JSONObject,
-  vd: Void,
-  byte: Byte,
-  createdAt: DateTime,
-  "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-  nonRequiredField(
-    "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-    nonRequiredArg: String = "some default string"
-    reqArg: String!
-    reqArrayArg: [String]!
-    dblReqArrayArg: [String!]!
-  ): String
-
-  requiredField: String! @deprecated(reason: "`requiredField` is going away")
-
-  episode: EpisodeEnum!
-
-  requiredArrayField: [String]!
-
-  doubleRequiredArrayField: [String!]!
-
-  "This field will not show up thanks to the @spectaql directive options"
-  fieldThatWillNotShowUp: String! @spectaql(options: [{key: "undocumented", value: "true" }])
-}
-
-"This is a type that should probably be undocumented. Metadata will indicate this should be hidden"
-type SecretType {
-  secret: String!
-}
-
-"These are very important `enum`s. `Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-enum EpisodeEnum {
-  "Who is Luke? `Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-  NEWHOPE @deprecated(reason: "`NEWHOPE` is going away")
-  "Who is Darth?"
-  EMPIRE
-  "Who are the Ewoks?"
-  JEDI
-}
+"UUIDの文字列"
+scalar UUID
+"Firebase Authのuid"
+scalar UID
 
 "Something interesting about my `Queries`."
 type Query {
-  "This will be removed due to SecretType being removed"
-  secrets: [SecretType],
-
-  "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-  myQuery(
-    "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-    nonReqQueryArg: String = "some default string"
-    reqQueryArg: String
-    reqQueryArrayArg: [String]!
-    dblReqQueryArrayArg: [String!]!
-  ): String @deprecated(reason: "`myQuery` is going away")
-
   "This Query has the same name as a Mutation"
   stringThing: String
-
-  getInts: [Int]
-
-  "I return a list of the SimpleType Union"
-  simpleTypes: [SimpleTypes]
-
-  "I'm the optionals query"
-  optionalsQuery(
-    optionalArg: [String]
-  ): [String]
-
-  requiredsQuery(
-    dblReqArg: [String!]!
-  ): [String!]!
-
-  myTypes: [MyType]
-
-  enumsQuery(
-    enums: [EpisodeEnum!]! = [EMPIRE, JEDI]
-    "enum defaults should get literalized"
-    enum: EpisodeEnum! = EMPIRE
-    "everything else should get JSON5.parsed"
-    ints: [Int] = [1,2,3]
-  ): String
-
-  nodeQuery(
-    id: String!
-  ): Node
-
-  "Without this Query, the `FilterInput` would not be shown"
-  filterInputQuery(
-    "Without this Query, the `FilterInput` would not be shown"
-    filter: FilterInput
-  ): MyType
-
-  filterInputQueryWithDefault(
-    filter: FilterInput = { someField: true, episodeEnum: JEDI }
-  ): MyType
-
-  "Without this Query, the `ContactInfoInput` would not be shown"
-  contactInfoInputQuery(
-    "Without this arg, the `ContactInfoInput` would not be shown"
-    input: ContactInfoInput,
-  ): MyType
 }
 
 type Mutation {
-  "This Mutation has the same name as a Query"
-  stringThing(anArgument: String): String
-
-  "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-  myMutation(
-    "`Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-    nonReqMutationArg: String = "some default string"
-    reqMutationArg: String!
-    reqMutationArrayArg: [String]!
-    dblReqMutationArrayArg: [String!]!
-  ): String
+  upsertPostRinneScenario(
+    object: RinneScenarioInput!
+    on_conflict: RinneScenario_on_conflict
+  ): RinneScenario
+}
+input RinneScenarioInput {
+  id: UUID!
+  authorId: UID!
+  title: String!
+  path: String!
+  imageUrl: String!
+  published: Boolean!
+  updatedAt: String!
 }
 
-type Subscription {
-  "The `myTypeUpdatedSubscription`, baby!"
-  myTypeUpdatedSubscription(input: ID): MyType!
-
-  "A subscription that will probably be removed when `SecretType` is removed"
-  secretTypeSubscription: SecretType!
+input RinneScenario_on_conflict {
+  constraint: RinneScenario_constraint!
+  update_columns: [RinneScenario_update_column!]
 }
 
-"An Input Type for filtering things. `Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-input FilterInput {
-  "Comment for someField. `Markdown` and reference interpolation like [`[String!]!`]({{Types.String}}) are supported"
-  someField: Boolean = false
-  "Comment for anotherField"
-  anotherField: String
-  "Comment for episodeEnums"
-  episodeEnums: [EpisodeEnum!] = [EMPIRE, JEDI]
-  episodeEnum: EpisodeEnum
+enum RinneScenario_constraint {
+  RinneScenario_pkey
 }
 
-"ContactInfoInput description"
-input ContactInfoInput {
-  email: String
-  "Without this InputField, the `AddressInput` would not be shown"
-  address: AddressInput = { planet: "Earth" }
-  phoneNumber: PhoneNumber
+enum RinneScenario_update_column {
+  title
+  published
+  updatedAt
 }
 
-"AddresInput description"
-input AddressInput {
-  lat: String
-  lon: String
-  planet: String
-}
-
-type MyUnusedType {
-  id: String
+type RinneScenario {
+  id: UUID!
 }
