@@ -21,23 +21,57 @@ scalar UID
 
 "Something interesting about my `Queries`."
 type Query {
-  "This Query has the same name as a Mutation"
-  stringThing: String
+  RinneScenario(
+    where: RinneScenario_filter
+    order_by: RinneScenario_order_by
+  ): [RinneScenario!]!
 }
 
 type Mutation {
   upsertPostRinneScenario(
     object: RinneScenarioInput!
     on_conflict: RinneScenario_on_conflict
-  ): RinneScenario
+  ): RinneScenarioUpsertResponse
 }
-input RinneScenarioInput {
+
+input RinneScenario_filter {
+  authorId: UID
+}
+
+input RinneScenario_order_by {
+  updatedAt: order_by_direction
+}
+
+enum order_by_direction {
+  asc
+  desc
+}
+
+type RinneScenario {
   id: UUID!
   authorId: UID!
   title: String!
-  path: String!
+  updatedAt: String!
+  createdAt: String!
   imageUrl: String!
+  path: String!
   published: Boolean!
+}
+
+input RinneScenarioInput {
+  "シナリオID"
+  id: UUID!
+  "作成者ID"
+  authorId: UID!
+  "シナリオタイトル"
+  title: String!
+  "シナリオ詳細ファイルのパス"
+  path: String!
+  "シナリオタイトル画像のURL"
+  imageUrl: String!
+  "公開するかどうか"
+  published: Boolean!
+  "更新日時"
   updatedAt: String!
 }
 
@@ -51,11 +85,14 @@ enum RinneScenario_constraint {
 }
 
 enum RinneScenario_update_column {
+  "シナリオタイトル"
   title
+  "公開するかどうか"
   published
+  "更新日時"
   updatedAt
 }
 
-type RinneScenario {
+type RinneScenarioUpsertResponse {
   id: UUID!
 }
