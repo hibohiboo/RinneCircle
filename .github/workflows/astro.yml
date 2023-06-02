@@ -107,10 +107,10 @@ jobs:
 
       # GraphQL Document 作成
       - name: GraphQL Schema Modules
-        run: npm run install
+        run: npm  install
         working-directory: docs/SpectaQL
       - name: GraphQL Schema Build
-        run: npm run bild
+        run: npm run build
         working-directory: docs/SpectaQL
 
       # ドキュメント作成
