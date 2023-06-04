@@ -1,66 +1,39 @@
 {
   "OBJECT": {
-    "SecretType": {
-      "documentation": { "undocumented": true }
-    },
-    "MyType": {
+    "RinneScenario": {
       "fields": {
-        "nonRequiredField": {
-          "documentation": { "example": "Metadata example of `nonRequiredField`"}
+        "id": {
+          "documentation": {
+            "example": "7d8bb386-0f86-4dff-be34-86bb2f55b366"
+          }
+        },
+        "path": {
+          "documentation": {
+            "example": "/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json"
+          }
+        },
+        "imageUrl": {
+          "documentation": {
+            "example": "/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png"
+          }
         }
       }
     },
     "Query": {
-      "fields": {
-        "myQuery": {
-          "args": {
-            "nonReqQueryArg": {
-              "documentation": { "example": "Metadata example of `nonReqQueryArg`" }
-            }
-          }
-        }
-      }
+      "fields": {}
     }
   },
   "SCALAR": {
     "DateTime": {
-      "documentation": { "example": "2016-10-07T01:08:03.420Z" }
-    }
-  },
-  "INPUT_OBJECT": {
-    "FilterInput": {
-      "inputFields": {
-        "someField": {
-          "documentation": { "example": true }
-        },
-        "anotherField": {
-          "documentation": { "example": "Metadata example of `anotherField`" }
-        },
-        "episodeEnums": {
-          "documentation": { "example": ["EMPIRE"] }
-        }
+      "documentation": {
+        "example": "2016-10-07T01:08:03.420Z"
+      }
+    },
+    "UID": {
+      "documentation": {
+        "example": "33fCzdRoHwgB2BXX5ttxbEJPYtM2"
       }
     }
   },
-  "ENUM": {
-    "EpisodeEnum": {
-      "enumValues": {
-        "EMPIRE": {
-          "documentation": { "undocumented": true }
-        }
-      }
-    }
-  },
-  "INTERFACE": {
-    "MyInterface": {
-      "fields": {
-        "id": {
-          "documentation": { "example": "exampleFromMetadataJson" }
-        },
-        "name": {
-          "documentation": { "undocumented": true }
-        }
-      }
-    }
-  }
+  "ENUM": {}
 }

@@ -16,7 +16,7 @@ scalar JSONObject
 scalar Void
 "UUIDの文字列"
 scalar UUID
-"Firebase Authのuid"
+"Firebase Authのuid.28文字"
 scalar UID
 
 "Something interesting about my `Queries`."
@@ -48,13 +48,21 @@ enum order_by_direction {
 }
 
 type RinneScenario {
+  "シナリオID"
   id: UUID!
+  "作成者ID"
   authorId: UID!
+  "シナリオタイトル"
   title: String!
-  updatedAt: String!
-  createdAt: String!
+  "作成日時(UTC)"
+  updatedAt: DateTime!
+  "更新日時(UTC)"
+  createdAt: DateTime!
+  "シナリオタイトル画像のURL"
   imageUrl: String!
+  "シナリオ詳細ファイルのパス"
   path: String!
+  "公開するかどうか"
   published: Boolean!
 }
 
@@ -71,8 +79,8 @@ input RinneScenarioInput {
   imageUrl: String!
   "公開するかどうか"
   published: Boolean!
-  "更新日時"
-  updatedAt: String!
+  "更新日時(UTC)"
+  updatedAt: DateTime!
 }
 
 input RinneScenario_on_conflict {

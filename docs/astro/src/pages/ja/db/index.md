@@ -25,7 +25,10 @@ id は firebase auth の uid を基本的に使用。28 文字。
 
 ### RinneScenario シナリオ
 
-path は S3 へのパス。「ユーザ ID+作成日+シナリオ ID」 `${ユーザID}/scenario/${yyyy}/${mm}/${dd}/${シナリオID}`
+path は S3 へのパス。「ユーザ ID+作成日+シナリオ ID+scenario.json」 `${ユーザID}/scenario/${yyyy}/${mm}/${dd}/${シナリオID}/scenario.json`
+
+imageUrl は S3 のパス。「ユーザ ID+作成日+シナリオ ID+scenarioTitle.png※」 `${ユーザID}/scenario/${yyyy}/${mm}/${dd}/${シナリオID}/scenarioTitle.png`
+png※はアップロードした画像の拡張子
 
 ### RinneSession セッション ※未作成
 
