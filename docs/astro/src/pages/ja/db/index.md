@@ -11,6 +11,8 @@ layout: ../../../layouts/MainLayout.astro
 - nvarchar(n) の n について
   - uuid が-を含めると 36 文字。特に理由がなければ、きりよく`nvarchar(64)`をデフォルトとする。
   - なお、text と nvarchar の使い分けに明確なメリットはない。[Let's POSTGRES - 文字列型の使い分け](https://lets.postgresql.jp/documents/technical/text-processing/1)
+- Timestamp について
+  - DB 上はＵＴＣを扱うものとする。ＡＷＳ上の node.js は UTC で基本的には動かしたほうが扱いやすいため。
 
 ## データベース
 

@@ -9,12 +9,12 @@
         },
         "path": {
           "documentation": {
-            "example": "/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json"
+            "example": "/data/user-data/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json"
           }
         },
         "imageUrl": {
           "documentation": {
-            "example": "/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png"
+            "example": "/data/user-data/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png"
           }
         }
       }
