@@ -105,6 +105,14 @@ jobs:
         run: pnpm run mv-jest-reports
         working-directory: packages/ui_components
 
+      # GraphQL Document 作成
+      - name: GraphQL Schema Modules
+        run: npm  install
+        working-directory: docs/SpectaQL
+      - name: GraphQL Schema Build
+        run: npm run build
+        working-directory: docs/SpectaQL
+
       # ドキュメント作成
       - name: Build with Astro
         run: |
