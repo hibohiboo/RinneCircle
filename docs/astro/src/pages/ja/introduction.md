@@ -2,6 +2,9 @@
 title: RinneCircle 開発室
 description: Docs intro
 layout: ../../layouts/MainLayout.astro
+image:
+  src: /RinneCircle/main.png
+  alt: Rinne Circle Top Image
 ---
 
 **開発室 にようこそ！**
