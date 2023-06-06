@@ -113,6 +113,15 @@ jobs:
         run: npm run build
         working-directory: docs/SpectaQL
 
+
+      # OpenAPI Document 作成
+      - name: OpenAPI Schema Modules
+        run: npm  install
+        working-directory: docs/openAPI
+      - name: OPEN API Schema Build
+        run: npm run build
+        working-directory: docs/openAPI
+
       # ドキュメント作成
       - name: Build with Astro
         run: |

@@ -1,0 +1,20 @@
+organization: testing_redocly
+
+extends:
+  - recommended
+
+apis:
+  core@v2:
+    root: ./openapi.yml
+    rules:
+      no-ambiguous-paths: error
+
+theme:
+  openapi:
+    schemaExpansionLevel: 2
+    generateCodeSamples:
+      languages:
+        - lang: curl
+        - lang: JavaScript
+    referenceDocs:
+      hideLogo: true

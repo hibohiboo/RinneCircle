@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "redoc": "redocly build-docs ./openapi.yml  -o ../astro/public/rinne-openapi/index.html  --theme.openapi.disableSearch",
+    "build": "redocly build-docs core@v2 --disableGoogleFont -o ../astro/public/rinne-openapi/index.html",
     "dev": "redocly preview-docs openapi.yml"
   },
   "keywords": [],
