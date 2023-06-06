@@ -15,6 +15,8 @@ layout: ../../layouts/MainLayout.astro
 
 - [マークダウン - Astro](https://astro.build/)
 - [ER 図など - Mermaid Editor](https://mermaid.live/edit)
+- [OpenAPI - Redocly](https://github.com/Redocly/openapi-starter)
+- [GraphQL - SpectaQL](https://github.com/anvilco/spectaql)
 
 ### AI に相談
 
