@@ -1,0 +1,23 @@
+openapi: 3.1.0
+info:
+  title: 輪廻サークル
+  description: 輪廻サークル用API
+  version: 0.0.1
+  contact:
+    name: hibohiboo
+    url: https://hibohiboo.github.io/RinneCircle/ja/introduction/
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+paths:
+  /scenario:
+    $ref: ./paths/rinne.yml
+  
+
+components:
+  schemas:
+    AccessNumber:
+      $ref: ./components/schemas/access-count.yml#/AccessNumber
+  securitySchemes:
+    ApiKeyAuth:
+      $ref: ./components/schemas/apiKey.yml

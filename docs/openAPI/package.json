@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "redoc": "redocly build-docs ./openapi.yml  -o ../astro/public/rinne-openapi/index.html  --theme.openapi.disableSearch",
+    "dev": "redocly preview-docs openapi.yml"
+  },
+  "keywords": [],
+  "author": "hibohiboo <hibohiboo66+github@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@redocly/cli": "^1.0.0-beta.127",
+    "redoc": "^2.0.0"
+  }
+}

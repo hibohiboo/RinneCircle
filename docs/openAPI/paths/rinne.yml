@@ -1,0 +1,11 @@
+put:
+  operationId: scenario
+  security:
+    - ApiKeyAuth: [ ]
+  responses:
+    202:
+      description: シナリオ作成/更新
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/scenario.yml
