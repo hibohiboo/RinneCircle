@@ -1,4 +1,3 @@
+# Dir for bundles
 dist
-!package-lock.json
-swagger.yaml
-.env
+node_modules

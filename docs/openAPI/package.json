@@ -1,17 +1,14 @@
 {
-  "name": "app",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "redocly build-docs core@v2 --disableGoogleFont -o ../astro/public/rinne-openapi/index.html",
-    "dev": "redocly preview-docs openapi.yml"
+  "name": "acme-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "@redocly/cli": "1.0.0-beta.127"
   },
-  "keywords": [],
-  "author": "hibohiboo <hibohiboo66+github@gmail.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@redocly/cli": "^1.0.0-beta.127",
-    "redoc": "^2.0.0"
+  "private": true,
+  "scripts": {
+    "start": "redocly preview-docs",
+    "bundle": "redocly bundle -o dist/bundle.yaml",
+    "test": "redocly lint",
+    "build": "redocly build-docs core@v1  --disableGoogleFont -o ../astro/public/rinne-openapi/index.html"
   }
 }

@@ -1,20 +1,20 @@
-organization: testing_redocly
-
+# See https://redocly.com/docs/cli/configuration/ for more information.
+apis:
+  core@v1: 
+    root: openapi/api.yaml
 extends:
   - recommended
-
-apis:
-  core@v2:
-    root: ./openapi.yml
-    rules:
-      no-ambiguous-paths: error
-
+rules:
+  no-unused-components: error
 theme:
   openapi:
-    schemaExpansionLevel: 2
+    htmlTemplate: ./docs/index.html
+    theme:
+      colors:
+        primary:
+          main: "#32329f"
     generateCodeSamples:
-      languages:
+      languages:  # Array of language config objects; indicates in which languages to generate code samples.
         - lang: curl
         - lang: JavaScript
-    referenceDocs:
-      hideLogo: true
+
