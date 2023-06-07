@@ -18,6 +18,8 @@ const envList = [
   "TAG_PROJECT_NAME",
   "BUCKET_NAME",
   "SUB_DIR_PATH_BUILDER",
+  "SSM_PARAM_KEY_API_URL",
+  "REST_API_VERSION",
 ] as const;
 for (const key of envList) {
   if (!process.env[key]) throw new Error(`please add ${key} to .env`);
@@ -61,4 +63,6 @@ new RinnneCircleFrontCdkStack(app, `${processEnv.PROJECT_ID}-FrontCdkStack`, {
   crossRegionReferences: true,
   zone,
   cert,
+  ssmAPIGWUrlKey: `${processEnv.SSM_PARAM_KEY_API_URL}-${processEnv.PROJECT_ID}`,
+  apiVersion: processEnv.REST_API_VERSION,
 });

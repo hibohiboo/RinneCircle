@@ -1,4 +1,5 @@
 import * as cdk from "aws-cdk-lib";
+import { Fn } from "aws-cdk-lib";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 import {
   CachePolicy,
@@ -16,7 +17,7 @@ import {
   HeadersReferrerPolicy,
   IDistribution,
 } from "aws-cdk-lib/aws-cloudfront";
-import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { HttpOrigin, S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
 import {
   CanonicalUserPrincipal,
   Effect,
@@ -31,6 +32,7 @@ import {
 import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import { BlockPublicAccess, Bucket, IBucket } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
+import { StringParameter } from "aws-cdk-lib/aws-ssm";
 import { Construct } from "constructs";
 
 type SubDirectoryPath = {
@@ -48,6 +50,8 @@ interface Props extends cdk.StackProps {
   subDirectoryPath: SubDirectoryPath;
   zone: IHostedZone;
   cert: Certificate;
+  ssmAPIGWUrlKey: string;
+  apiVersion: string;
 }
 export class RinnneCircleFrontCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Props) {
@@ -121,12 +125,7 @@ export class RinnneCircleFrontCdkStack extends cdk.Stack {
     bucket: Bucket,
     identity: OriginAccessIdentity,
     cert: Certificate,
-    props: {
-      defaultCachePolicyName: string;
-      distributionName: string;
-      deployDomain: string;
-      subDirectoryPath: SubDirectoryPath;
-    },
+    props: Props,
   ) {
     const { defaultCachePolicyName, distributionName, deployDomain } = props;
     const defaultPolicyOption = {
@@ -165,7 +164,36 @@ export class RinnneCircleFrontCdkStack extends cdk.Stack {
     cdk.Tags.of(spaRoutingFunction).add("Service", "Cloud Front Function");
 
     const responseHeadersPolicy = this.createResponseHeadersPolicy();
+    const restApiUrl = StringParameter.valueForStringParameter(
+      this,
+      props.ssmAPIGWUrlKey,
+    );
+    const apiEndPointUrlWithoutProtocol = Fn.select(
+      1,
+      Fn.split("://", restApiUrl),
+    );
+    const apiEndPointDomainName = Fn.select(
+      0,
+      Fn.split("/", apiEndPointUrlWithoutProtocol),
+    );
     const additionalBehaviors = {
+      [`${props.apiVersion}/*`]: {
+        origin: new HttpOrigin(apiEndPointDomainName, {}),
+        allowedMethods: AllowedMethods.ALLOW_ALL,
+        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        cachePolicy: new CachePolicy(
+          this,
+          `${distributionName}-rest-api-cache-policy`,
+          {
+            cachePolicyName: `${distributionName}-rest-api-cache-policy`,
+            comment: "CloudFront + ApiGateway用ポリシー",
+            headerBehavior: CacheHeaderBehavior.allowList(
+              "x-api-key",
+              "content-type",
+            ),
+          },
+        ),
+      },
       "data/*": {
         origin,
         allowedMethods: AllowedMethods.ALLOW_ALL,
@@ -183,7 +211,8 @@ export class RinnneCircleFrontCdkStack extends cdk.Stack {
         ),
       },
     };
-    const d = new Distribution(this, distributionName, {
+
+    const distribution = new Distribution(this, distributionName, {
       comment: "RinneCircle",
       defaultRootObject: "/index.html",
       priceClass: PriceClass.PRICE_CLASS_200,
@@ -203,9 +232,9 @@ export class RinnneCircleFrontCdkStack extends cdk.Stack {
       certificate: cert,
       domainNames: [deployDomain],
     });
-    cdk.Tags.of(d).add("Service", "Cloud Front");
+    cdk.Tags.of(distribution).add("Service", "Cloud Front");
 
-    return d;
+    return distribution;
   }
 
   private createResponseHeadersPolicy() {

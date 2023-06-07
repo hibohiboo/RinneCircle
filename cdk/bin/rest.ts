@@ -9,8 +9,10 @@ dotenv.config();
 const envList = [
   "PROJECT_ID",
   "SSM_PARAM_KEY_LAYER_VERSIONS_ARN",
+  "SSM_PARAM_KEY_API_URL",
   "HASURA_GRAPHQL_ENDPOINT",
   "HASURA_GRAPHQL_SECRET",
+  "REST_API_VERSION",
 ] as const;
 for (const key of envList) {
   if (!process.env[key]) throw new Error(`please add ${key} to .env`);
@@ -27,10 +29,12 @@ new RineCircleRESTAPIStack(
   app,
   `${processEnv.PROJECT_ID}-RineCircleRESTAPIStack`,
   {
-    ssmKey: `${processEnv.SSM_PARAM_KEY_LAYER_VERSIONS_ARN}-${processEnv.PROJECT_ID}`,
+    ssmLambdaLayerKey: `${processEnv.SSM_PARAM_KEY_LAYER_VERSIONS_ARN}-${processEnv.PROJECT_ID}`,
+    ssmAPIGWUrlKey: `${processEnv.SSM_PARAM_KEY_API_URL}-${processEnv.PROJECT_ID}`,
     env,
     graphqlEndpoint: processEnv.HASURA_GRAPHQL_ENDPOINT,
     graphqlSecret: processEnv.HASURA_GRAPHQL_SECRET,
     projectId: processEnv.PROJECT_ID,
+    apiVersion: processEnv.REST_API_VERSION,
   },
 );

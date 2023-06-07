@@ -9,7 +9,9 @@ import { Construct } from "constructs";
 
 interface Props extends core.StackProps {
   projectId: string;
-  ssmKey: string;
+  ssmLambdaLayerKey: string;
+  ssmAPIGWUrlKey: string;
+  apiVersion: string;
   graphqlEndpoint: string;
   graphqlSecret: string;
 }
@@ -17,9 +19,8 @@ export class RineCircleRESTAPIStack extends core.Stack {
   constructor(scope: Construct, id: string, props: Props) {
     super(scope, id, props);
     // APIGateway作成
-    const apiName = `${props.projectId}-rest-api`;
-    const restApi = this.createRestAPIGateway(apiName);
-    this.createUsagePlan(restApi, apiName);
+    const restApi = this.createRestAPIGateway(props);
+
     const apiRoot = restApi.root.addResource("api");
 
     // シナリオ永続化
@@ -27,7 +28,7 @@ export class RineCircleRESTAPIStack extends core.Stack {
       entry: `../packages/backend/src/hadlers/api/persistantScnearioLambda.ts`,
       name: "persistantScnearioLambda",
       descritption: "輪廻サークルのシナリオをRDSに永続化",
-      ssmKeyForLambdaLayerArn: props.ssmKey,
+      ssmKeyForLambdaLayerArn: props.ssmLambdaLayerKey,
       environment: {
         GRAPHQL_ENDPOINT: props.graphqlEndpoint,
         GRAPHQL_SECRET: props.graphqlSecret,
@@ -41,15 +42,30 @@ export class RineCircleRESTAPIStack extends core.Stack {
         new apigateway.LambdaIntegration(persistantScnearioLambda),
       );
   }
-  private createRestAPIGateway(restApiName: string) {
+  private createRestAPIGateway(props: Props) {
+    const restApiName = `${props.projectId}-rest-api`;
+    0;
     const restApi = new apigateway.RestApi(this, restApiName, {
       description: "輪廻サークルバックエンドRESTAPI",
       restApiName,
       endpointTypes: [apigateway.EndpointType.REGIONAL],
       deployOptions: {
-        stageName: "v1",
+        stageName: props.apiVersion,
       },
     });
+    this.createUsagePlan(restApi, restApiName);
+
+    // APIGatewayのURLをSSMに保存
+    const layerArnParameter = new StringParameter(this, "ssm-layer-version", {
+      parameterName: props.ssmAPIGWUrlKey,
+      stringValue: restApi.url,
+      description: "api gateway url for cloudfront",
+    });
+    core.Tags.of(layerArnParameter).add("Name", "ssm-layer-version");
+    new core.CfnOutput(this, "APIGatewayURL", {
+      value: `${restApi.domainName}`,
+    });
+
     return restApi;
   }
 
