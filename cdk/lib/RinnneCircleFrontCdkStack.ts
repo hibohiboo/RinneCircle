@@ -52,6 +52,7 @@ interface Props extends cdk.StackProps {
   cert: Certificate;
   ssmAPIGWUrlKey: string;
   apiVersion: string;
+  xApiKey: string;
 }
 export class RinnneCircleFrontCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: Props) {
@@ -178,7 +179,9 @@ export class RinnneCircleFrontCdkStack extends cdk.Stack {
     );
     const additionalBehaviors = {
       [`${props.apiVersion}/*`]: {
-        origin: new HttpOrigin(apiEndPointDomainName, {}),
+        origin: new HttpOrigin(apiEndPointDomainName, {
+          customHeaders: { "x-api-key": props.xApiKey },
+        }),
         allowedMethods: AllowedMethods.ALLOW_ALL,
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
         cachePolicy: new CachePolicy(

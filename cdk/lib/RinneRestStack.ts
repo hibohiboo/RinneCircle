@@ -3,7 +3,6 @@ import * as apigateway from "aws-cdk-lib/aws-apigateway";
 import * as iam from "aws-cdk-lib/aws-iam";
 import { LayerVersion, Runtime } from "aws-cdk-lib/aws-lambda";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
-import * as s3 from "aws-cdk-lib/aws-s3";
 import { StringParameter } from "aws-cdk-lib/aws-ssm";
 import { Construct } from "constructs";
 
@@ -22,6 +21,9 @@ export class RineCircleRESTAPIStack extends core.Stack {
     const restApi = this.createRestAPIGateway(props);
 
     const apiRoot = restApi.root.addResource("api");
+    const methodOptions = this.createMethodOptions({
+      "method.request.header.Content-Type": true,
+    });
 
     // シナリオ永続化
     const persistantScnearioLambda = this.createLambda({
@@ -40,6 +42,7 @@ export class RineCircleRESTAPIStack extends core.Stack {
       .addMethod(
         "PUT",
         new apigateway.LambdaIntegration(persistantScnearioLambda),
+        methodOptions,
       );
   }
   private createRestAPIGateway(props: Props) {
@@ -125,5 +128,37 @@ export class RineCircleRESTAPIStack extends core.Stack {
     });
     core.Tags.of(func).add("Name", props.name);
     return func;
+  }
+  private createMethodOptions(
+    requestParameters: Record<string, boolean>,
+  ): apigateway.MethodOptions {
+    const responseParameters = {
+      "method.response.header.Access-Control-Allow-Headers": true,
+      "method.response.header.Access-Control-Allow-Methods": true,
+      "method.response.header.Access-Control-Allow-Origin": true,
+    };
+    return {
+      apiKeyRequired: true,
+      requestParameters,
+      methodResponses: [
+        {
+          statusCode: "200",
+          responseParameters: {
+            "method.response.header.Timestamp": true,
+            "method.response.header.Content-Length": true,
+            "method.response.header.Content-Type": true,
+            ...responseParameters,
+          },
+        },
+        {
+          statusCode: "400",
+          responseParameters,
+        },
+        {
+          statusCode: "500",
+          responseParameters,
+        },
+      ],
+    };
   }
 }
