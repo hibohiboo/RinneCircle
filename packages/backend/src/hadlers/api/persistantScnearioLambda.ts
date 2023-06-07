@@ -37,7 +37,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   const data = await graphqlClient.executeQuery(query);
   console.log(data);
   return {
-    statusCode: 202,
+    statusCode: 200,
     body: JSON.stringify(data),
   };
 };

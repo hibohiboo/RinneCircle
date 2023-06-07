@@ -3,7 +3,7 @@ put:
   security:
     - ApiKeyAuth: [ ]
   responses:
-    202:
+    200:
       description: シナリオ作成/更新
       content:
         application/json:
