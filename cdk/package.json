@@ -12,6 +12,7 @@
     "front-deploy": "cdk -a \"npx ts-node --prefer-ts-exts bin/cdk.ts\" deploy --all --profile produser",
     "cognito-deploy": "cdk -a \"npx ts-node --prefer-ts-exts bin/cognito.ts\" deploy --all --profile produser",
     "layer-version-deploy": "cdk -a \"npx ts-node --prefer-ts-exts bin/lambda-layer-version-deploy.ts\" deploy --profile produser",
+    "rest-deploy": "cdk -a \"npx ts-node --prefer-ts-exts bin/rest.ts\" deploy --profile produser",
     "cdk": "cdk"
   },
   "devDependencies": {

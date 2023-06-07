@@ -44,7 +44,7 @@ importers:
         version: 18.11.9
       '@types/react':
         specifier: latest
-        version: 18.2.7
+        version: 18.2.8
       autoprefixer:
         specifier: ^10.4.12
         version: 10.4.13(postcss@8.4.19)
@@ -124,6 +124,10 @@ importers:
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
+    devDependencies:
+      '@types/aws-lambda':
+        specifier: ^8.10.116
+        version: 8.10.116
 
   packages/components:
     dependencies:
@@ -314,7 +318,7 @@ importers:
     devDependencies:
       '@types/react':
         specifier: latest
-        version: 18.2.7
+        version: 18.2.8
       eslint:
         specifier: ^8.11.0
         version: 8.28.0
@@ -6095,6 +6099,10 @@ packages:
 
   /@types/aria-query@5.0.1:
     resolution: {integrity: sha512-XTIieEY+gvJ39ChLcB4If5zHtPxt3Syj5rgZR+e1ctpmK8NjPf0zFqsz4JpLJT0xla9GFDKjy8Cpu331nrmE1Q==}
+    dev: true
+
+  /@types/aws-lambda@8.10.116:
+    resolution: {integrity: sha512-LSvIyxYCsIMOiBnb5D6HTf7JXLCh3KPiZWL6Pkn1MqV/v5OoP42GDqn5H4wHKGGKN0mJB+4y1r0oat1dLBAkuA==}
     dev: true
 
   /@types/babel__core@7.20.0:
