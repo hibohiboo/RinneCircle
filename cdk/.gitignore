@@ -8,3 +8,6 @@ node_modules
 cdk.out
 cdk.context.json
 .env
+
+# layer version
+bundle-node_modules
