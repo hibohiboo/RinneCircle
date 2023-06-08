@@ -106,6 +106,7 @@ export class RineCircleRESTAPIStack extends core.Stack {
       this,
       props.ssmKeyForLambdaLayerArn,
     );
+
     const layers = [
       LayerVersion.fromLayerVersionArn(
         this,
@@ -113,13 +114,22 @@ export class RineCircleRESTAPIStack extends core.Stack {
         lambdaLayerArn,
       ),
     ];
+    // 同じStack上でLayerVersionを作っていない場合、cdk synthで sam local 実行用のoutputを作るときにレイヤーを使うとエラーになる。
+    const layerSettings = !!process.env["CDK_SYNTH"]
+      ? {}
+      : {
+          bundling,
+          layers,
+        };
+    // console.log(!!process.env["CDK_SYNT"]);
+    // console.log(process.env["CDK_SYNT"]);
+    // const layerSettings = {};
     const func = new NodejsFunction(this, props.name, {
       runtime: Runtime.NODEJS_18_X,
       entry: props.entry,
       functionName: props.name,
       description: props.descritption,
-      layers,
-      bundling: bundling,
+      ...layerSettings,
       environment: props.environment,
       initialPolicy: props.initialPolicy,
       timeout: props.timeoutSec

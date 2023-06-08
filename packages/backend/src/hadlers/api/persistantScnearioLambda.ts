@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandlerV2 } from "aws-lambda";
 import { getGraphQLClient } from "../../domain/graphql";
-import { Scenario } from "../../domain/scenario/types";
+import { Scenario, UpsertResponse } from "../../domain/scenario/types";
 import { format } from "date-fns";
 export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   if (!event.body)
@@ -21,7 +21,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   );
   const now = new Date();
   const updatedAt = format(now, "yyyy-mm-dd HH:mm:ss");
-  const query = `mutation  { 
+  const query = `mutation { 
     upsertPostRinneScenario: insert_RinneScenario_one(
       on_conflict: {constraint: RinneScenario_pkey, update_columns:[title,published,updatedAt]},
       object: { id: "${scenario.id}"
@@ -34,8 +34,15 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       ) { id }
     }`;
 
-  const data = await graphqlClient.executeQuery(query);
-  console.log(data);
+  const data = await graphqlClient.executeQuery<UpsertResponse>(query);
+
+  if (data.errors) {
+    console.log(JSON.stringify(data));
+    return {
+      statusCode: 500,
+      body: JSON.stringify(data),
+    };
+  }
   return {
     statusCode: 200,
     body: JSON.stringify(data),

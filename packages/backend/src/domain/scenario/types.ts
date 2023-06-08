@@ -6,3 +6,9 @@ export interface Scenario {
   path: string;
   published: boolean;
 }
+type UUID = string;
+export interface UpsertResponse {
+  upsertPostRinneScenario: {
+    id: UUID;
+  };
+}

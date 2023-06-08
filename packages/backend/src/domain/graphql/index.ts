@@ -1,10 +1,12 @@
+import { HasuraResponse } from "./types";
+
 export const getGraphQLClient = (url: string, secret: string) => {
   return new GraphqlClient(url, secret);
 };
 
 export class GraphqlClient {
   constructor(private url: string, private secret: string) {}
-  async executeQuery(query: string) {
+  async executeQuery<T>(query: string) {
     console.log("query", query);
     const body = JSON.stringify({ query });
     const response = await fetch(this.url, {
@@ -16,6 +18,6 @@ export class GraphqlClient {
       },
       body,
     });
-    return response.json();
+    return response.json() as Promise<HasuraResponse<T>>;
   }
 }
