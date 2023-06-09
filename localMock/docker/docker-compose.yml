@@ -5,8 +5,11 @@ services:
     working_dir: /app
     volumes:
       - ../src:/app/src
+      - ../prisma:/app/prisma
     ports:
       - 4000:4000
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres:5432
     command: [npm, run, dev]
   postgres:
     image: postgres:15.3

@@ -5,14 +5,16 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn src/index.ts",
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "migrate-init": "prisma migrate dev --name init"
   },
   "dependencies": {
     "@graphql-tools/graphql-file-loader": "^8.0.0",
     "@graphql-tools/load": "^8.0.0",
     "@graphql-tools/schema": "^10.0.0",
     "apollo-server": "^3.1.1",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "prisma": "^4.15.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^4.0.1",
