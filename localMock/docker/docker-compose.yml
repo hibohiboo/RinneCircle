@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  apollo:
+    build: ./apollo
+    working_dir: /app
+    volumes:
+      - ../src:/app/src
+    ports:
+      - 4000:4000
+    command: [npm, run, dev]
+  postgres:
+    image: postgres:15.3
+    restart: always
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+volumes:
+  postgres:
