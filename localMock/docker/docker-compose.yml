@@ -6,6 +6,7 @@ services:
     volumes:
       - ../src:/app/src
       - ../prisma:/app/prisma
+      - ../codegen.yml:/app/codegen.yml
     ports:
       - 4000:4000
     environment:
