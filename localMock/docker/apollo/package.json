@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn src/index.ts",
     "codegen": "graphql-codegen --config codegen.yml",
-    "migrate-init": "prisma migrate dev --name init"
+    "migrate-init": "prisma migrate dev --name init",
+    "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@graphql-tools/graphql-file-loader": "^8.0.0",
