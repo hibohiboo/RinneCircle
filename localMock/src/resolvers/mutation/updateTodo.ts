@@ -10,11 +10,13 @@ export const updateTodo: MutationResolvers["updateTodo"] = async (
   // @ts-ignore
   let userId = context.user?.id;
   if (!userId) {
-    userId = "sample";
+    userId = 1;
   }
 
+  // @ts-ignore
   const targetTodo = await prisma.todo.findUnique({
     where: {
+      // @ts-ignore
       id: args.id,
     },
   });
@@ -27,16 +29,17 @@ export const updateTodo: MutationResolvers["updateTodo"] = async (
     throw new Error("Authorization Error.");
   }
   if (!args.input) throw new Error("args Error.");
+  // @ts-ignore
   const todo = await prisma.todo.update({
     where: {
+      // @ts-ignore
       id: args.id,
     },
     data: {
+      // @ts-ignore
       title: args.input.title,
+      // @ts-ignore
       status: args.input.status,
-    },
-    include: {
-      user: true,
     },
   });
   return todo;

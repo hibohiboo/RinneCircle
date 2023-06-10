@@ -7,16 +7,15 @@ export const getTodos: QueryResolvers["getTodos"] = async (
   context,
   info,
 ) => {
+  // @ts-ignore
   let userId = context.user?.id;
   if (!userId) {
-    userId = "sample";
+    userId = 1;
   }
+  // @ts-ignore
   const todos = await prisma.todo.findMany({
     where: {
       userId,
-    },
-    include: {
-      user: true,
     },
   });
   return todos;

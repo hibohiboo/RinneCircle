@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "predev": "prisma generate",
     "dev": "ts-node-dev --respawn src/index.ts",
     "codegen": "graphql-codegen --config codegen.yml",
     "migrate-init": "prisma migrate dev --name init",

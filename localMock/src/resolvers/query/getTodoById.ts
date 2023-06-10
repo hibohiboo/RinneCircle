@@ -7,12 +7,10 @@ export const getTodoById: QueryResolvers["getTodoById"] = async (
   context,
   info,
 ) => {
+  // @ts-ignore
   const todo = await prisma.todo.findUnique({
     where: {
       id: args.id,
-    },
-    include: {
-      user: true,
     },
   });
   if (!todo) {
