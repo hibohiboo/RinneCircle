@@ -1,7 +1,7 @@
 import { prisma } from "../../lib/prisma";
 import { MutationResolvers } from "../../types/generated/graphql";
 
-export const upsertPostRinneScenario: MutationResolvers["upsertPostRinneScenario"] =
+export const upsertPostRinneScenario: MutationResolvers["insert_RinneScenario_one"] =
   async (parent, args, context, info) => {
     const update = args.on_conflict.update_columns?.reduce(
       (a, b) => ({ ...a, [b]: args.object[b] }),

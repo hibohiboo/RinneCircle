@@ -1,1 +1,1 @@
-export { upsertPostRinneScenario } from "./upsertScenario";
+export { upsertPostRinneScenario as insert_RinneScenario_one } from "./upsertScenario";

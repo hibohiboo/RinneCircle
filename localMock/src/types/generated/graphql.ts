@@ -29,11 +29,11 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  upsertPostRinneScenario?: Maybe<RinneScenarioUpsertResponse>;
+  insert_RinneScenario_one?: Maybe<RinneScenarioUpsertResponse>;
 };
 
 
-export type MutationUpsertPostRinneScenarioArgs = {
+export type MutationInsert_RinneScenario_OneArgs = {
   object: RinneScenarioInput;
   on_conflict: RinneScenario_On_Conflict;
 };
@@ -262,7 +262,7 @@ export interface JsonObjectScalarConfig extends GraphQLScalarTypeConfig<Resolver
 }
 
 export type MutationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = ResolversObject<{
-  upsertPostRinneScenario?: Resolver<Maybe<ResolversTypes['RinneScenarioUpsertResponse']>, ParentType, ContextType, RequireFields<MutationUpsertPostRinneScenarioArgs, 'object' | 'on_conflict'>>;
+  insert_RinneScenario_one?: Resolver<Maybe<ResolversTypes['RinneScenarioUpsertResponse']>, ParentType, ContextType, RequireFields<MutationInsert_RinneScenario_OneArgs, 'object' | 'on_conflict'>>;
 }>;
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = ResolversObject<{

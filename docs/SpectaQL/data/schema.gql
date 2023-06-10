@@ -28,9 +28,9 @@ type Query {
 }
 
 type Mutation {
-  upsertPostRinneScenario(
+  insert_RinneScenario_one(
     object: RinneScenarioInput!
-    on_conflict: RinneScenario_on_conflict
+    on_conflict: RinneScenario_on_conflict!
   ): RinneScenarioUpsertResponse
 }
 
