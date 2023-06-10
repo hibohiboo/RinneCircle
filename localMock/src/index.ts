@@ -9,17 +9,6 @@ const schema = loadSchemaSync(join(__dirname, "./schema.graphql"), {
   loaders: [new GraphQLFileLoader()],
 });
 
-const books = [
-  {
-    title: "The Awakening",
-    author: "Kate Chopin",
-  },
-  {
-    title: "City of Glass",
-    author: "Paul Auster",
-  },
-];
-
 const schemaWithResolvers = addResolversToSchema({ schema, resolvers });
 const server = new ApolloServer({ schema: schemaWithResolvers });
 

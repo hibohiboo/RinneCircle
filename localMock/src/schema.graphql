@@ -1,38 +1,106 @@
+directive @spectaql(
+  options: [SpectaQLOption]
+) on QUERY | MUTATION | SUBSCRIPTION | FIELD | FRAGMENT_DEFINITION | FRAGMENT_SPREAD | INLINE_FRAGMENT | VARIABLE_DEFINITION | SCHEMA | SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | INTERFACE | UNION | ENUM | ENUM_VALUE | INPUT_OBJECT | INPUT_FIELD_DEFINITION
+
+input SpectaQLOption {
+  key: String!
+  value: String!
+}
+
+"This is a `DateTime` scalar"
+scalar DateTime
+
+scalar URL @spectaql(options: [{ key: "example", value: "https://work.com" }])
+scalar JSON
+scalar JSONObject
+scalar Void
+"UUIDの文字列"
+scalar UUID
+"Firebase Authのuid.28文字"
+scalar UID
+
+"Something interesting about my `Queries`."
 type Query {
-  getTodos: [Todo]!
-  getTodoById(id: Int!): Todo
+  RinneScenario(
+    where: RinneScenario_filter
+    order_by: RinneScenario_order_by
+  ): [RinneScenario!]!
 }
 
 type Mutation {
-  addTodo(input: AddTodoInput): Todo
-  updateTodo(id: Int, input: UpdateTodoInput): Todo
-  deleteTodo(id: Int): Todo
+  upsertPostRinneScenario(
+    object: RinneScenarioInput!
+    on_conflict: RinneScenario_on_conflict!
+  ): RinneScenarioUpsertResponse
 }
 
-input AddTodoInput {
+input RinneScenario_filter {
+  authorId: UID
+}
+
+input RinneScenario_order_by {
+  updatedAt: order_by_direction
+}
+
+enum order_by_direction {
+  asc
+  desc
+}
+
+type RinneScenario {
+  "シナリオID"
+  id: UUID!
+  "作成者ID"
+  authorId: UID!
+  "シナリオタイトル"
   title: String!
-  description: String
+  "作成日時(UTC)"
+  updatedAt: DateTime!
+  "更新日時(UTC)"
+  createdAt: DateTime!
+  "シナリオタイトル画像のURL"
+  imageUrl: String!
+  "シナリオ詳細ファイルのパス"
+  path: String!
+  "公開するかどうか"
+  published: Boolean!
 }
 
-input UpdateTodoInput {
-  title: String
-  description: String
-  status: TodoStatus
+input RinneScenarioInput {
+  "シナリオID"
+  id: UUID!
+  "作成者ID"
+  authorId: UID!
+  "シナリオタイトル"
+  title: String!
+  "シナリオ詳細ファイルのパス"
+  path: String!
+  "シナリオタイトル画像のURL"
+  imageUrl: String!
+  "公開するかどうか"
+  published: Boolean!
+  "更新日時(UTC)"
+  updatedAt: DateTime!
 }
 
-enum TodoStatus {
-  done
-  pending
+input RinneScenario_on_conflict {
+  constraint: RinneScenario_constraint!
+  update_columns: [RinneScenario_update_column!]
 }
 
-type Todo {
-  id: Int
-  createdAt: Date
-  updatedAt: Date
-  title: String
-  description: String
-  status: TodoStatus!
-  userId: String
+enum RinneScenario_constraint {
+  RinneScenario_pkey
 }
 
-scalar Date
+enum RinneScenario_update_column {
+  "シナリオタイトル"
+  title
+  "公開するかどうか"
+  published
+  "更新日時"
+  updatedAt
+}
+
+type RinneScenarioUpsertResponse {
+  id: UUID!
+}

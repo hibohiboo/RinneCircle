@@ -10,24 +10,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum TodoStatus {
-  done
-  pending
-}
-
-model Todo {
-  id          Int        @id @default(autoincrement())
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
-  title       String     @db.VarChar(255)
-  description String?
-  status      TodoStatus @default(pending)
-  user        User       @relation(fields: [userId], references: [id])
-  userId      String
-}
-
-model User {
-  id    String  @id @unique
-  name  String?
-  todos Todo[]
+model RinneScenario {
+  id        String   @id @db.VarChar(64)
+  authorId  String   @db.VarChar(64)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.Text
+  path      String   @db.Text
+  published Boolean  @default(false)
+  imageUrl  String?  @db.Text
 }
