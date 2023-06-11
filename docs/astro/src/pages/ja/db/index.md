@@ -19,6 +19,10 @@ layout: ../../../layouts/MainLayout.astro
 環境として[Hasura](https://cloud.hasura.io/login?redirect_url=%2F) + [Neon](https://neon.tech/)を使用する。
 エンジンは Postgers。
 
+ローカルでの動作確認のため、Prisma で作成する。
+SQL は`localMock/prisma/migrations`を参照。
+これの SQL を Hasura に適用する。
+
 ## テーブル
 
 ### RinneUser ユーザ
