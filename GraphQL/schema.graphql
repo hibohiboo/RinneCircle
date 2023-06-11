@@ -21,10 +21,7 @@ scalar UID
 
 "Something interesting about my `Queries`."
 type Query {
-  RinneScenario(
-    where: RinneScenario_filter
-    order_by: RinneScenario_order_by
-  ): [RinneScenario!]!
+  RinneScenario(where: RinneScenario_filter): [RinneScenario!]!
 }
 
 type Mutation {
@@ -36,10 +33,7 @@ type Mutation {
 
 input RinneScenario_filter {
   authorId: UID
-}
-
-input RinneScenario_order_by {
-  updatedAt: order_by_direction
+  id: UUID
 }
 
 enum order_by_direction {
@@ -59,7 +53,7 @@ type RinneScenario {
   "更新日時(UTC)"
   createdAt: DateTime!
   "シナリオタイトル画像のURL"
-  imageUrl: String!
+  imageUrl: String
   "シナリオ詳細ファイルのパス"
   path: String!
   "公開するかどうか"

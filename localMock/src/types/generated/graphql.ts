@@ -47,7 +47,6 @@ export type Query = {
 
 /** Something interesting about my `Queries`. */
 export type QueryRinneScenarioArgs = {
-  order_by?: InputMaybe<RinneScenario_Order_By>;
   where?: InputMaybe<RinneScenario_Filter>;
 };
 
@@ -60,7 +59,7 @@ export type RinneScenario = {
   /** シナリオID */
   id: Scalars['UUID']['output'];
   /** シナリオタイトル画像のURL */
-  imageUrl: Scalars['String']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
   /** シナリオ詳細ファイルのパス */
   path: Scalars['String']['output'];
   /** 公開するかどうか */
@@ -98,15 +97,12 @@ export type RinneScenario_Constraint =
 
 export type RinneScenario_Filter = {
   authorId?: InputMaybe<Scalars['UID']['input']>;
+  id?: InputMaybe<Scalars['UUID']['input']>;
 };
 
 export type RinneScenario_On_Conflict = {
   constraint: RinneScenario_Constraint;
   update_columns?: InputMaybe<Array<RinneScenario_Update_Column>>;
-};
-
-export type RinneScenario_Order_By = {
-  updatedAt?: InputMaybe<Order_By_Direction>;
 };
 
 export type RinneScenario_Update_Column =
@@ -210,7 +206,6 @@ export type ResolversTypes = ResolversObject<{
   RinneScenario_constraint: RinneScenario_Constraint;
   RinneScenario_filter: RinneScenario_Filter;
   RinneScenario_on_conflict: RinneScenario_On_Conflict;
-  RinneScenario_order_by: RinneScenario_Order_By;
   RinneScenario_update_column: RinneScenario_Update_Column;
   SpectaQLOption: SpectaQlOption;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
@@ -234,7 +229,6 @@ export type ResolversParentTypes = ResolversObject<{
   RinneScenarioUpsertResponse: RinneScenarioUpsertResponse;
   RinneScenario_filter: RinneScenario_Filter;
   RinneScenario_on_conflict: RinneScenario_On_Conflict;
-  RinneScenario_order_by: RinneScenario_Order_By;
   SpectaQLOption: SpectaQlOption;
   String: Scalars['String']['output'];
   UID: Scalars['UID']['output'];
@@ -273,7 +267,7 @@ export type RinneScenarioResolvers<ContextType = Context, ParentType extends Res
   authorId?: Resolver<ResolversTypes['UID'], ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['UUID'], ParentType, ContextType>;
-  imageUrl?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  imageUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   path?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   published?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   title?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
