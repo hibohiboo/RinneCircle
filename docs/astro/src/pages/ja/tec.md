@@ -6,8 +6,8 @@ layout: ../../layouts/MainLayout.astro
 
 ## アーキテクチャ
 
-![](/draw.io/architechture-tecs.drawio.png)
+![](/RinneCircle/draw.io/architechture-tecs.drawio.png)
 
 ## ローカル環境
 
-![](/draw.io/architechture-local_tec.drawio.png)
+![](/RinneCircle/draw.io/architechture-local_tec.drawio.png)
