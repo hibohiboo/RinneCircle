@@ -1,7 +1,7 @@
 overwrite: true
 generates:
   ./src/types/generated/graphql.ts:
-    schema: ./src/schema.graphql
+    schema: ./schema.graphql
     config:
       useIndexSignature: true
       # リゾルバーのためのContextの型をsrc/types/context.d.tsから読み込む

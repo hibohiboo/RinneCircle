@@ -5,7 +5,7 @@ import { ApolloServer } from "apollo-server";
 import { join } from "path";
 import resolvers from "./resolvers";
 
-const schema = loadSchemaSync(join(__dirname, "./schema.graphql"), {
+const schema = loadSchemaSync(join(__dirname, "../schema.graphql"), {
   loaders: [new GraphQLFileLoader()],
 });
 

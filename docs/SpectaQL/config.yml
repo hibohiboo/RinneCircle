@@ -5,7 +5,7 @@ spectaql:
 
 introspection:
   removeTrailingPeriodFromDescriptions: false
-  schemaFile: ./data/schema.gql
+  schemaFile: ../../GraphQL/schema.graphql
   metadataFile: ./data/metadata.json
   dynamicExamplesProcessingModule: ./customizations/examples
   queryNameStrategy: capitalizeFirst
