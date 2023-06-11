@@ -1,0 +1,15 @@
+version: "1.1"
+name: Status Check
+env:
+  host: http://127.0.0.1:3000
+tests:
+  example:
+    steps:
+      - name: GET request
+        http:
+          url: ${{env.host}}/api/scenario
+          method: GET
+          params:
+            id: 1
+          check:
+            status: /^20/
