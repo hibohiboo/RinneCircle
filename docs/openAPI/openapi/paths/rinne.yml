@@ -2,10 +2,25 @@ put:
   operationId: scenario
   security:
     - ApiKeyAuth: [ ]
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/scenario.yml
   responses:
     200:
       description: シナリオ作成/更新
+
+get:
+  operationId: scenario
+  security:
+    - ApiKeyAuth: [ ]
+  responses:
+    200:
+      description: シナリオ取得
       content:
         application/json:
           schema:
-            $ref: ../components/schemas/scenario.yml
+            type: array
+            items:
+              $ref: ../components/schemas/scenario-response.yml

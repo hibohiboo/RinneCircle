@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: string
+    example: "7d8bb386-0f86-4dff-be34-86bb2f55b366"
+  authorId:
+    type: string
+    example: "33fCzdRoHwgB2BXX5ttxbEJPYtM2"
+  title:
+    type: string
+    example: "シナリオタイトル"
+  imageUrl:
+    type: string
+    example: "/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png"
+  path:
+    type: string
+    example: "/33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json"
+  published:
+    type: boolean
+    example: true
+  createdAt:
+    type: string
+    example: "2023-06-06 10:00:00"
+  updatedAt:
+    type: string
+    example: "2023-06-10 23:30:00"
+
