@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandlerV2 } from "aws-lambda";
 import { getGraphQLClient } from "../../domain/graphql";
-import { Scenario, UpsertResponse } from "../../domain/scenario/types";
+import { ScenarioInput, UpsertResponse } from "../../domain/scenario/types";
 import { format } from "date-fns";
 export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   if (!event.body)
@@ -13,7 +13,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     if (!process.env[key]) throw new Error(`env ${key} is empty`);
   }
   const processEnv = process.env as Record<(typeof envList)[number], string>;
-  const scenario = JSON.parse(event.body) as Scenario;
+  const scenario = JSON.parse(event.body) as ScenarioInput;
 
   const graphqlClient = getGraphQLClient(
     processEnv.GRAPHQL_ENDPOINT,

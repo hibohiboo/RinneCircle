@@ -25,25 +25,41 @@ export class RineCircleRESTAPIStack extends core.Stack {
       "method.request.header.Content-Type": true,
     });
 
-    // シナリオ永続化
-    const persistantScnearioLambda = this.createLambda({
-      entry: `../packages/backend/src/hadlers/api/persistantScnearioLambda.ts`,
-      name: "persistantScnearioLambda",
-      descritption: "輪廻サークルのシナリオをRDSに永続化",
+    // RDS代わりにGraphQLへのアクセスを行うLambdaを基本とする
+    const graphQlEnvironment = {
+      GRAPHQL_ENDPOINT: props.graphqlEndpoint,
+      GRAPHQL_SECRET: props.graphqlSecret,
+    };
+    const defaultLambdaProps = this.createLambdaProps({
       ssmKeyForLambdaLayerArn: props.ssmLambdaLayerKey,
-      environment: {
-        GRAPHQL_ENDPOINT: props.graphqlEndpoint,
-        GRAPHQL_SECRET: props.graphqlSecret,
-      },
+      environment: { ...graphQlEnvironment },
       timeoutSec: 30, // 外部エンドポイントを経由してJSONを処理するため3秒では足りない
     });
-    apiRoot
-      .addResource("scenario")
-      .addMethod(
-        "PUT",
-        new apigateway.LambdaIntegration(persistantScnearioLambda),
-        methodOptions,
-      );
+    // シナリオ永続化
+    const persistantScnearioLambda = this.createLambda({
+      ...defaultLambdaProps,
+      entry: `../packages/backend/src/hadlers/api/persistantScnearioLambda.ts`,
+      functionName: "persistantScnearioLambda",
+      description: "輪廻サークルのシナリオをRDSに永続化",
+    });
+    const scenarioResource = apiRoot.addResource("scenario");
+    scenarioResource.addMethod(
+      "PUT",
+      new apigateway.LambdaIntegration(persistantScnearioLambda),
+      methodOptions,
+    );
+    // シナリオ取得
+    const getScnearioLambda = this.createLambda({
+      ...defaultLambdaProps,
+      entry: `../packages/backend/src/hadlers/api/getScnearioLambda.ts`,
+      functionName: "getScnearioLambda",
+      description: "輪廻サークルのシナリオを取得",
+    });
+    scenarioResource.addMethod(
+      "GET",
+      new apigateway.LambdaIntegration(getScnearioLambda),
+      methodOptions,
+    );
   }
   private createRestAPIGateway(props: Props) {
     const restApiName = `${props.projectId}-rest-api`;
@@ -87,10 +103,8 @@ export class RineCircleRESTAPIStack extends core.Stack {
       value: apiKey.keyId,
     });
   }
-  private createLambda(props: {
-    name: string;
-    descritption: string;
-    entry: string;
+
+  private createLambdaProps(props: {
     ssmKeyForLambdaLayerArn: string;
     environment?: Record<string, string>;
     initialPolicy?: iam.PolicyStatement[];
@@ -121,22 +135,22 @@ export class RineCircleRESTAPIStack extends core.Stack {
           bundling,
           layers,
         };
-    // console.log(!!process.env["CDK_SYNT"]);
-    // console.log(process.env["CDK_SYNT"]);
-    // const layerSettings = {};
-    const func = new NodejsFunction(this, props.name, {
+
+    return {
       runtime: Runtime.NODEJS_18_X,
-      entry: props.entry,
-      functionName: props.name,
-      description: props.descritption,
       ...layerSettings,
       environment: props.environment,
       initialPolicy: props.initialPolicy,
       timeout: props.timeoutSec
         ? core.Duration.seconds(props.timeoutSec)
         : undefined,
-    });
-    core.Tags.of(func).add("Name", props.name);
+    };
+  }
+
+  private createLambda(props: core.aws_lambda_nodejs.NodejsFunctionProps) {
+    if (!props.functionName) throw new Error("functionName empty");
+    const func = new NodejsFunction(this, props.functionName, props);
+    core.Tags.of(func).add("Name", props.functionName);
     return func;
   }
   private createMethodOptions(
