@@ -15,6 +15,12 @@ get:
   operationId: scenario
   security:
     - ApiKeyAuth: [ ]
+  parameters:
+    - in: query
+      name: id
+      schema:
+        type: string
+        example: 7d8bb386-0f86-4dff-be34-86bb2f55b366
   responses:
     200:
       description: シナリオ取得

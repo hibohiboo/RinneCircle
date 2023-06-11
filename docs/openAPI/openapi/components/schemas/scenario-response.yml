@@ -2,9 +2,11 @@ type: object
 properties:
   id:
     type: string
+    description: シナリオID(UUID)
     example: "7d8bb386-0f86-4dff-be34-86bb2f55b366"
   authorId:
     type: string
+    description: ユーザID(Firebase Authのuid)
     example: "33fCzdRoHwgB2BXX5ttxbEJPYtM2"
   title:
     type: string
@@ -20,8 +22,10 @@ properties:
     example: true
   createdAt:
     type: string
+    description: 作成日時 (JST)
     example: "2023-06-06 10:00:00"
   updatedAt:
+    description: 更新日時(JST)
     type: string
     example: "2023-06-10 23:30:00"
 
