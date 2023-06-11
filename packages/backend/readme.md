@@ -11,6 +11,7 @@ npm run pretest-start-api
 ```
 
 上記 2 つが稼働している状態で、テストを行うことができる。
+テスト内容は workflow.yml に置いた。
 
 ```
 npm run test

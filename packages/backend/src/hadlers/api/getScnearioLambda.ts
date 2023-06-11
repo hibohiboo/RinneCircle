@@ -13,7 +13,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
   if (!id) {
     console.log(event.queryStringParameters);
     return {
-      statusCode: 200,
+      statusCode: 400,
       body: JSON.stringify([]),
     };
   }

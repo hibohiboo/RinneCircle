@@ -34,17 +34,17 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
       ) { id }
     }`;
 
-  const data = await graphqlClient.executeQuery<UpsertResponse>(query);
+  const res = await graphqlClient.executeQuery<UpsertResponse>(query);
 
-  if (data.errors) {
-    console.log(JSON.stringify(data));
+  if (res.errors) {
+    console.log(JSON.stringify(res));
     return {
       statusCode: 500,
-      body: JSON.stringify(data),
+      body: JSON.stringify(res),
     };
   }
   return {
     statusCode: 200,
-    body: JSON.stringify(data),
+    body: JSON.stringify({ id: res.data?.upsertPostRinneScenario.id }),
   };
 };

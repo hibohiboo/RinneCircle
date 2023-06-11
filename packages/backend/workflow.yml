@@ -3,13 +3,138 @@ name: Status Check
 env:
   host: http://127.0.0.1:3000
 tests:
-  example:
+  scenario1:
+    name: 正常系:シナリオ作成
     steps:
-      - name: GET request
+      - name: PUT シナリオの作成
+        http:
+          url: ${{env.host}}/api/scenario
+          method: PUT
+          json:
+            id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
+            authorId: 33fCzdRoHwgB2BXX5ttxbEJPYtM2
+            title: テスト用シナリオ
+            imageUrl: /33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
+            path: /33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
+            published: true
+          check:
+            status: /^20/
+          captures:
+            id:
+              jsonpath: $.id
+      - name: GET シナリオの取得
         http:
           url: ${{env.host}}/api/scenario
           method: GET
           params:
-            id: 1
+            id: ${{captures.id}}
           check:
             status: /^20/
+            jsonpath:
+              $[0].title: テスト用シナリオ
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  authorId:
+                    type: string
+                  title:
+                    type: string
+                  imageUrl:
+                    type: string
+                  path:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                required:
+                  - id
+                  - authorId
+                  - title
+                  - path
+                  - createdAt
+                  - updatedAt
+  scenario2:
+    name: 正常系:シナリオ更新
+    steps:
+      - name: PUT シナリオの作成
+        http:
+          url: ${{env.host}}/api/scenario
+          method: PUT
+          json:
+            id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
+            authorId: 33fCzdRoHwgB2BXX5ttxbEJPYtM2
+            title: テスト用シナリオ
+            imageUrl: /33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
+            path: /33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
+            published: true
+          check:
+            status: /^20/
+          captures:
+            id:
+              jsonpath: $.id
+      - name: GET テスト前タイトルを確認
+        http:
+          url: ${{env.host}}/api/scenario
+          method: GET
+          params:
+            id: ${{captures.id}}
+          check:
+            status: /^20/
+            jsonpath:
+              $[0].title: テスト用シナリオ
+
+      - name: PUT シナリオの更新
+        http:
+          url: ${{env.host}}/api/scenario
+          method: PUT
+          json:
+            id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
+            authorId: 33fCzdRoHwgB2BXX5ttxbEJPYtM2
+            title: 更新チェック - テスト用シナリオ2
+            imageUrl: /33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
+            path: /33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
+            published: true
+          check:
+            status: /^20/
+          captures:
+            id:
+              jsonpath: $.id
+      - name: GET テスト後のタイトルが更新されているか
+        http:
+          url: ${{env.host}}/api/scenario
+          method: GET
+          params:
+            id: ${{captures.id}}
+          check:
+            status: /^20/
+            jsonpath:
+              $[0].title: 更新チェック - テスト用シナリオ2
+
+
+  scenario-error1:
+    name: 異常系:存在しないシナリオを取得しようとした
+    steps:
+      - name: GET シナリオの取得
+        http:
+          url: ${{env.host}}/api/scenario
+          method: GET
+          params:
+            id: naiyo_sonna_id
+          check:
+            status: /^20/
+            jsonpath:
+              $: []
+  scenario-error2:
+    name: 異常系:idをパラメータに入れ忘れた
+    steps:
+      - name: GET シナリオの取得
+        http:
+          url: ${{env.host}}/api/scenario
+          method: GET
+          check:
+            status: /400/
