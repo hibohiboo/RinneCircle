@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   apollo:
     build: ./apollo
@@ -12,6 +13,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://user:password@postgres:5432
     command: [npm, run, dev]
+
   postgres:
     image: postgres:15.3
     restart: always

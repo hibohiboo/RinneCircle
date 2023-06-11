@@ -20,7 +20,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (event) => {
     processEnv.GRAPHQL_SECRET,
   );
   const now = new Date();
-  const updatedAt = format(now, "yyyy-mm-dd HH:mm:ss");
+  const updatedAt = format(now, "yyyy-MM-dd HH:mm:ss");
   const query = `mutation { 
     upsertPostRinneScenario: insert_RinneScenario_one(
       on_conflict: {constraint: RinneScenario_pkey, update_columns:[title,published,updatedAt]},

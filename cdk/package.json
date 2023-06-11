@@ -17,7 +17,7 @@
     "cdk": "cdk",
     "synth:rest": "cross-env CDK_SYNTH=true cdk -a \"npx ts-node --prefer-ts-exts bin/rest.ts\" synth rinne-circle-RineCircleRESTAPIStack",
     "prelocal-api": "npm run synth:rest",
-    "local-api": "sam local start-api -t ./cdk.out/rinne-circle-RineCircleRESTAPIStack.template.json"
+    "local-api": "sam local start-api -t ./cdk.out/rinne-circle-RineCircleRESTAPIStack.template.json --config-env env.json"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
