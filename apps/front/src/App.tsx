@@ -61,7 +61,6 @@ function App() {
       }}
     >
       <RinneBuilderTop />
-      <a href="https://github.com/hibohiboo/RinneCircle">♾</a>
     </div>
   );
 }

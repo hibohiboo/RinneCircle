@@ -19,15 +19,23 @@
   --sp-min-content-width: 320px;
   --sp-inner-padding: 24px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
 
 html {
   /* // 下の設定が認識できないブラウザのための指定。 */
-  font-size: 100%;
+  /* font-size: 100%; */
   /* //calc(1em + 1vw); // ビューポートの高さと幅に合わせてテキストサイズを調整。  */
-  font-size: 1em; 
   background-color: var(--navy);
-  height: 100%;
-  width: 100%;
 }
 
 body {
@@ -37,20 +45,8 @@ body {
     BlinkMacSystemFont, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, sans-serif;
   -webkit-text-size-adjust: 100%;
-  height: 100%;
-  width: 100%;
-}
-#root {
-  height: 100%;
-  width: 100%;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-}
 
 a {
   color: inherit;
