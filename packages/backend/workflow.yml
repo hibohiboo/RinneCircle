@@ -11,16 +11,16 @@ tests:
           url: ${{env.host}}/api/scenario
           method: PUT
           json:
-            id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+            id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
             authorId: x33fCzdRoHwgB2BXX5ttxbEJPYtM2
             title: テスト用シナリオ
-            imageUrl: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/x7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
-            path: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/x7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
+            imageUrl: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
+            path: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
             published: true
           check:
             status: /^20/
             jsonpath:
-              $.id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+              $.id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
           captures:
             id:
               jsonpath: $.id
@@ -33,7 +33,7 @@ tests:
           check:
             status: /^20/
             jsonpath:
-              $[0].id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+              $[0].id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
               $[0].title: テスト用シナリオ
             schema:
               type: array
@@ -69,16 +69,16 @@ tests:
           url: ${{env.host}}/api/scenario
           method: PUT
           json:
-            id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+            id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
             authorId: x33fCzdRoHwgB2BXX5ttxbEJPYtM2
             title: テスト用シナリオ
-            imageUrl: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/x7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
-            path: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/x7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
+            imageUrl: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
+            path: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
             published: true
           check:
             status: /^20/
             jsonpath:
-              $.id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+              $.id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
           captures:
             id:
               jsonpath: $.id
@@ -91,7 +91,7 @@ tests:
           check:
             status: /^20/
             jsonpath:
-              $[0].id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+              $[0].id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
               $[0].title: テスト用シナリオ
 
       - name: PUT シナリオの更新
@@ -99,11 +99,11 @@ tests:
           url: ${{env.host}}/api/scenario
           method: PUT
           json:
-            id: x7d8bb386-0f86-4dff-be34-86bb2f55b3662
+            id: 7d8bb386-0f86-4dff-be34-86bb2f55b3662
             authorId: x33fCzdRoHwgB2BXX5ttxbEJPYtM2
             title: 更新チェック - テスト用シナリオ2
-            imageUrl: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/x7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
-            path: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/x7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
+            imageUrl: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenarioTitle.png
+            path: /x33fCzdRoHwgB2BXX5ttxbEJPYtM2/scenario/2023/06/05/7d8bb386-0f86-4dff-be34-86bb2f55b366/scenario.json
             published: true
           check:
             status: /^20/

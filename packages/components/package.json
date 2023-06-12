@@ -27,6 +27,7 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
+    "@rinne-circle/backend": "workspace:*",
     "@aws-sdk/s3-presigned-post": "^3.350.0",
     "@prisma/client": "^4.15.0",
     "@storybook/addon-actions": "^7.0.20",
