@@ -2,7 +2,6 @@ import { Meta, StoryObj } from "@storybook/react";
 import { ComponentPropsWithoutRef } from "react";
 import { useForm } from "react-hook-form";
 import { PostFormFooter } from "./";
-import { ScenarioInput } from "@rinne-circle/backend";
 import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
 function TestComponent(

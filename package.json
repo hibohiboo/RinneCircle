@@ -9,7 +9,7 @@
   "scripts": {
     "build": "turbo run build",
     "build-front": "turbo run build --filter=./apps/front",
-    "dev": "turbo run dev",
+    "dev": "turbo run dev --filter=./apps/front",
     "start": "turbo run start",
     "lint": "turbo run lint",
     "clean": "turbo run clean",

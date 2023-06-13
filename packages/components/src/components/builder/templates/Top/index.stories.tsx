@@ -11,6 +11,20 @@ export default {
 
 type Story = StoryObj<typeof RinneBuilderTop>;
 
-export const Default: Story = { ...PCStory };
+const args = {
+  children: (
+    <>
+      ないものは作ればいい。
+      <a href="https://github.com/hibohiboo/RinneCircle" target="_blank">
+        ♾
+      </a>
+    </>
+  ),
+};
 
-export const SP: Story = { ...SPStory };
+export const Default: Story = {
+  ...PCStory,
+  args,
+};
+
+export const SP: Story = { ...SPStory, args };
