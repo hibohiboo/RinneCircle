@@ -3,6 +3,7 @@ import { ComponentPropsWithoutRef } from "react";
 import { useForm } from "react-hook-form";
 import { PostFormFooter } from "./";
 import { ScenarioInput } from "@rinne-circle/backend";
+import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
 function TestComponent(
   props: Omit<
@@ -10,7 +11,7 @@ function TestComponent(
     "register" | "control"
   >,
 ) {
-  const { register, control } = useForm<ScenarioInput>();
+  const { register, control } = useForm<ScenarioInputSchema>();
   return <PostFormFooter {...props} register={register} control={control} />;
 }
 

@@ -9,7 +9,6 @@ export default {
   decorators: [],
   parameters: {
     ...PCStory.parameters,
-    nextRouter: { pathname: "/my/posts" },
   },
   args: {
     title: "新規記事",

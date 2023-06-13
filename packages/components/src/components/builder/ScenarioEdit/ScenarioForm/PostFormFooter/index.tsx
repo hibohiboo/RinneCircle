@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { Button } from "@/components/common/atoms/Button";
 import { ContentFooter } from "@/components/common/molecules/ContentFooter";
 import { Switch } from "@/components/common/atoms/Switch";
-import { ScenarioDetailInput } from "@/domain/scenario/types";
+import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
 const SaveButton = ({
   name,
@@ -11,7 +11,7 @@ const SaveButton = ({
   onClickSave,
 }: {
   name: "published";
-  control: Control<ScenarioDetailInput>;
+  control: Control<ScenarioInputSchema>;
   onClickSave: (isPublish: boolean) => void;
 }) => {
   const isPublish = useWatch({ name, control });
@@ -24,7 +24,7 @@ const SaveButton = ({
         onClickSave(isPublish);
       }}
     >
-      {isPublish ? "記事を公開する" : "下書き保存する"}
+      {isPublish ? "シナリオを公開する" : "下書き保存する"}
     </Button>
   );
 };
@@ -36,7 +36,7 @@ export const PostFormFooter = ({
   onClickSave,
   onClickDelete,
 }: {
-  control: Control<ScenarioDetailInput>;
+  control: Control<ScenarioInputSchema>;
   isSubmitting: boolean;
   register: UseFormRegister<any>;
   onClickSave: (isPublish: boolean) => void;

@@ -1,24 +1,28 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
-import { ScenarioFormInfo } from ".";
-import { ScenarioDetailInput } from "@/domain/scenario/types";
+import { PostFormHeroImage } from "./";
 import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
 function TestComponent() {
   const {
-    register,
-    control,
     formState: { errors },
   } = useForm<ScenarioInputSchema>();
   return (
-    <ScenarioFormInfo register={register} control={control} errors={errors} />
+    <div style={{ display: "flex", height: "120px" }}>
+      <PostFormHeroImage
+        name="imageUrl"
+        error={errors.imageUrl?.message}
+        onChangeImage={() => {}}
+        imageUrl=""
+      />
+    </div>
   );
 }
 
 export default {
   component: TestComponent,
-} as Meta<typeof ScenarioFormInfo>;
+} as Meta<typeof PostFormHeroImage>;
 
-type Story = StoryObj<typeof ScenarioFormInfo>;
+type Story = StoryObj<typeof PostFormHeroImage>;
 
 export const Default: Story = {};

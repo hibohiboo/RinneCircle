@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { ComponentPropsWithoutRef } from "react";
 import { useForm } from "react-hook-form";
 import { PostFormFooter } from "./";
-import {} from "@rinne-circle/backend";
+import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
 const user = userEvent.setup();
 
@@ -13,7 +13,7 @@ function TestComponent(
     "register" | "control"
   >,
 ) {
-  const { register, control } = useForm<ScenarioDetailInput>();
+  const { register, control } = useForm<ScenarioInputSchema>();
   return <PostFormFooter {...props} register={register} control={control} />;
 }
 
@@ -31,11 +31,11 @@ const setup = (isSubmitting = false) => {
     user.click(getByRole("switch", { name: "公開ステータス" }));
   const clickSaveButton = () =>
     user.click(
-      queryByRole("button", { name: "記事を公開する" }) ||
+      queryByRole("button", { name: "シナリオを公開する" }) ||
         getByRole("button", { name: "下書き保存する" }),
     );
   const clickDeleteButton = () =>
-    user.click(getByRole("button", { name: "記事を削除する" }));
+    user.click(getByRole("button", { name: "シナリオを削除する" }));
   return {
     getByRole,
     clickSwitch,
@@ -53,10 +53,12 @@ test("「下書き保存する」ボタンを押下すると、イベントハ�
   expect(onClickSave).toHaveBeenCalled();
 });
 
-test("「記事を公開する」ボタンを押下すると、イベントハンドラーが実行される", async () => {
+test("「シナリオを公開する」ボタンを押下すると、イベントハンドラーが実行される", async () => {
   const { getByRole, clickSwitch, clickSaveButton, onClickSave } = setup();
   await clickSwitch();
-  expect(getByRole("button", { name: "記事を公開する" })).toBeInTheDocument();
+  expect(
+    getByRole("button", { name: "シナリオを公開する" }),
+  ).toBeInTheDocument();
   await clickSaveButton();
   expect(onClickSave).toHaveBeenCalled();
 });
@@ -64,6 +66,6 @@ test("「記事を公開する」ボタンを押下すると、イベントハ�
 test("送信中は全てのコントロールが非活性", async () => {
   const { getByRole } = setup(true);
   expect(getByRole("switch", { name: "公開ステータス" })).toBeDisabled();
-  expect(getByRole("button", { name: "記事を削除する" })).toBeDisabled();
+  expect(getByRole("button", { name: "シナリオを削除する" })).toBeDisabled();
   expect(getByRole("button", { name: "下書き保存する" })).toBeDisabled();
 });

@@ -9,9 +9,9 @@ import styles from "./styles.module.css";
 import { TextboxWithInfo } from "./TextboxWithInfo";
 import { WatchCounter } from "../WatchCounter";
 import { TextareaWithInfo } from "./TextareaWithInfo";
-import { ScenarioDetailInput } from "@/domain/scenario/types";
+import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
-type Props<T extends FieldValues = ScenarioDetailInput> = {
+type Props<T extends FieldValues = ScenarioInputSchema> = {
   register: UseFormRegister<T>;
   control: Control<T>;
   errors: FieldErrors<T>;

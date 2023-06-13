@@ -7,14 +7,16 @@ import {
 } from "react-hook-form";
 import styles from "./styles.module.css";
 import { ScenarioFormInfo } from "./ScenarioFormInfo";
-import * as z from "zod";
+
 import { TextareaWithInfo } from "./ScenarioFormInfo/TextareaWithInfo";
 import { PostFormFooter } from "./PostFormFooter";
-import { ScenarioDetailInput } from "@/domain/scenario/types";
+import { PostFormHeroImage } from "./PostFormHeroImage";
+import {
+  ScenarioInputSchema,
+  updateScenarioInputSchema,
+} from "@/domain/scenario/schema";
 
-const updateScenarioInputSchema = z.object({});
-
-type Props<T extends FieldValues = {}> = {
+type Props<T extends FieldValues = ScenarioInputSchema> = {
   title: string;
   defaultValues?: Partial<T>;
   children?: React.ReactNode;
@@ -26,11 +28,10 @@ type Props<T extends FieldValues = {}> = {
 export const PostForm = (props: Props) => {
   const {
     register,
-    setValue,
     handleSubmit,
     control,
     formState: { errors, isSubmitting },
-  } = useForm<ScenarioDetailInput>({
+  } = useForm<ScenarioInputSchema>({
     defaultValues: props.defaultValues,
     resolver: zodResolver(updateScenarioInputSchema),
   });
@@ -38,7 +39,9 @@ export const PostForm = (props: Props) => {
     <form
       aria-label={props.title}
       className={styles.module}
-      onSubmit={() => {}}
+      onSubmit={() => {
+        handleSubmit;
+      }}
     >
       <div className={styles.content}>
         <div className={styles.meta}>
@@ -47,13 +50,13 @@ export const PostForm = (props: Props) => {
             control={control}
             errors={errors}
           />
-          {/* <PostFormHeroImage
-            register={register}
-            setValue={setValue}
+          <PostFormHeroImage
             name="imageUrl"
             defaultImageUrl={props.defaultValues?.imageUrl}
             error={errors.imageUrl?.message}
-          /> */}
+            onChangeImage={() => {}}
+            imageUrl={""}
+          />
         </div>
         <TextareaWithInfo
           {...register("title")}
