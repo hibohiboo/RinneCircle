@@ -84,9 +84,3 @@ test("適正内容で「記事を公開」を試みると、onClickSave イベ�
   expect(onValid).not.toHaveBeenCalled();
   expect(onInvalid).not.toHaveBeenCalled();
 });
-
-test("「記事を削除する」ボタンを押下すると、onClickDelete イベントハンドラーが実行される", async () => {
-  const { clickDelete, onClickDelete } = setup();
-  await clickDelete();
-  expect(onClickDelete).toHaveBeenCalled();
-});

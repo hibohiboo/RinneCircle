@@ -1,9 +1,9 @@
 import { Control, UseFormRegister, useWatch } from "react-hook-form";
 import styles from "./styles.module.css";
-import { ScenarioInput } from "@rinne-circle/backend";
 import { Button } from "@/components/common/atoms/Button";
 import { ContentFooter } from "@/components/common/molecules/ContentFooter";
 import { Switch } from "@/components/common/atoms/Switch";
+import { ScenarioDetailInput } from "@/domain/scenario/types";
 
 const SaveButton = ({
   name,
@@ -11,7 +11,7 @@ const SaveButton = ({
   onClickSave,
 }: {
   name: "published";
-  control: Control<ScenarioInput>;
+  control: Control<ScenarioDetailInput>;
   onClickSave: (isPublish: boolean) => void;
 }) => {
   const isPublish = useWatch({ name, control });
@@ -36,7 +36,7 @@ export const PostFormFooter = ({
   onClickSave,
   onClickDelete,
 }: {
-  control: Control<ScenarioInput>;
+  control: Control<ScenarioDetailInput>;
   isSubmitting: boolean;
   register: UseFormRegister<any>;
   onClickSave: (isPublish: boolean) => void;
@@ -61,7 +61,7 @@ export const PostFormFooter = ({
               theme="transparent"
               onClick={onClickDelete}
             >
-              記事を削除する
+              シナリオを削除する
             </Button>
           </div>
         )}

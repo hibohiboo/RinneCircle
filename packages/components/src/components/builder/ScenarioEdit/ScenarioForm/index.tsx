@@ -8,9 +8,9 @@ import {
 import styles from "./styles.module.css";
 import { ScenarioFormInfo } from "./ScenarioFormInfo";
 import * as z from "zod";
-import { ScenarioInput } from "@rinne-circle/backend";
 import { TextareaWithInfo } from "./ScenarioFormInfo/TextareaWithInfo";
 import { PostFormFooter } from "./PostFormFooter";
+import { ScenarioDetailInput } from "@/domain/scenario/types";
 
 const updateScenarioInputSchema = z.object({});
 
@@ -18,10 +18,10 @@ type Props<T extends FieldValues = {}> = {
   title: string;
   defaultValues?: Partial<T>;
   children?: React.ReactNode;
+  onValid: SubmitHandler<T>;
+  onInvalid?: SubmitErrorHandler<T>;
   onClickSave: (isPublish: boolean) => void;
-  onClickDelete?: () => void;
 };
-type ScenarioInputDetails = ScenarioInput & { body: string };
 
 export const PostForm = (props: Props) => {
   const {
@@ -30,7 +30,7 @@ export const PostForm = (props: Props) => {
     handleSubmit,
     control,
     formState: { errors, isSubmitting },
-  } = useForm<ScenarioInput>({
+  } = useForm<ScenarioDetailInput>({
     defaultValues: props.defaultValues,
     resolver: zodResolver(updateScenarioInputSchema),
   });
@@ -67,7 +67,6 @@ export const PostForm = (props: Props) => {
         register={register}
         control={control}
         onClickSave={props.onClickSave}
-        onClickDelete={props.onClickDelete}
       />
       {props.children}
     </form>

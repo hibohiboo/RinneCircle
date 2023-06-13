@@ -1,14 +1,14 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import { ScenarioFormInfo } from ".";
-import { ScenarioInput } from "@rinne-circle/backend";
+import { ScenarioDetailInput } from "@/domain/scenario/types";
 
 function TestComponent() {
   const {
     register,
     control,
     formState: { errors },
-  } = useForm<ScenarioInput>();
+  } = useForm<ScenarioDetailInput>();
   return (
     <ScenarioFormInfo register={register} control={control} errors={errors} />
   );

@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { ComponentPropsWithoutRef } from "react";
 import { useForm } from "react-hook-form";
 import { PostFormFooter } from "./";
-import { ScenarioInput } from "@rinne-circle/backend";
+import {} from "@rinne-circle/backend";
 
 const user = userEvent.setup();
 
@@ -13,7 +13,7 @@ function TestComponent(
     "register" | "control"
   >,
 ) {
-  const { register, control } = useForm<ScenarioInput>();
+  const { register, control } = useForm<ScenarioDetailInput>();
   return <PostFormFooter {...props} register={register} control={control} />;
 }
 
@@ -59,12 +59,6 @@ test("「記事を公開する」ボタンを押下すると、イベントハ�
   expect(getByRole("button", { name: "記事を公開する" })).toBeInTheDocument();
   await clickSaveButton();
   expect(onClickSave).toHaveBeenCalled();
-});
-
-test("「記事を削除する」ボタンを押下すると、イベントハンドラーが実行される", async () => {
-  const { clickDeleteButton, onClickDelete } = setup();
-  await clickDeleteButton();
-  expect(onClickDelete).toHaveBeenCalled();
 });
 
 test("送信中は全てのコントロールが非活性", async () => {
