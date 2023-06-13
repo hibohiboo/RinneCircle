@@ -1,7 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import { ScenarioFormInfo } from ".";
-import { ScenarioDetailInput } from "@/domain/scenario/types";
 import { ScenarioInputSchema } from "@/domain/scenario/schema";
 
 function TestComponent() {

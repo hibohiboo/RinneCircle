@@ -8,21 +8,23 @@ import {
 import styles from "./styles.module.css";
 import { ScenarioFormInfo } from "./ScenarioFormInfo";
 
-import { TextareaWithInfo } from "./ScenarioFormInfo/TextareaWithInfo";
 import { PostFormFooter } from "./PostFormFooter";
 import { PostFormHeroImage } from "./PostFormHeroImage";
 import {
   ScenarioInputSchema,
-  updateScenarioInputSchema,
+  ScenarioInputFormSchema,
 } from "@/domain/scenario/schema";
+import { ChangeEvent } from "react";
 
 type Props<T extends FieldValues = ScenarioInputSchema> = {
   title: string;
   defaultValues?: Partial<T>;
   children?: React.ReactNode;
+  imageUrl?: string;
   onValid: SubmitHandler<T>;
   onInvalid?: SubmitErrorHandler<T>;
   onClickSave: (isPublish: boolean) => void;
+  onChangeImage?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const PostForm = (props: Props) => {
@@ -33,15 +35,13 @@ export const PostForm = (props: Props) => {
     formState: { errors, isSubmitting },
   } = useForm<ScenarioInputSchema>({
     defaultValues: props.defaultValues,
-    resolver: zodResolver(updateScenarioInputSchema),
+    resolver: zodResolver(ScenarioInputFormSchema),
   });
   return (
     <form
       aria-label={props.title}
       className={styles.module}
-      onSubmit={() => {
-        handleSubmit;
-      }}
+      onSubmit={handleSubmit(props.onValid, props.onInvalid)}
     >
       <div className={styles.content}>
         <div className={styles.meta}>
@@ -50,20 +50,16 @@ export const PostForm = (props: Props) => {
             control={control}
             errors={errors}
           />
-          <PostFormHeroImage
-            name="imageUrl"
-            defaultImageUrl={props.defaultValues?.imageUrl}
-            error={errors.imageUrl?.message}
-            onChangeImage={() => {}}
-            imageUrl={""}
-          />
+          {props.onChangeImage && (
+            <PostFormHeroImage
+              name="imageUrl"
+              defaultImageUrl={props.defaultValues?.imageUrl}
+              error={errors.imageUrl?.message}
+              onChangeImage={props.onChangeImage}
+              imageUrl={props.imageUrl}
+            />
+          )}
         </div>
-        <TextareaWithInfo
-          {...register("title")}
-          title="本文"
-          rows={20}
-          error={errors.title?.message}
-        />
       </div>
       <PostFormFooter
         isSubmitting={isSubmitting}

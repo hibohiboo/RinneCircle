@@ -1,6 +1,6 @@
 import * as z from "zod";
 
-export const updateScenarioInputSchema = z.object({
+export const ScenarioInputFormSchema = z.object({
   title: z.string().min(1, "1文字以上入力してください"),
   description: z.string().nullable(),
   body: z.string().nullable(),
@@ -9,4 +9,4 @@ export const updateScenarioInputSchema = z.object({
     .string({ required_error: "イメージを選択してください" })
     .nullable(),
 });
-export type ScenarioInputSchema = z.infer<typeof updateScenarioInputSchema>;
+export type ScenarioInputSchema = z.infer<typeof ScenarioInputFormSchema>;

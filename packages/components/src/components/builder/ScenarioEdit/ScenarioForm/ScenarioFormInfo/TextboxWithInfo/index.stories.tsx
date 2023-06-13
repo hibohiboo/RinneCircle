@@ -3,7 +3,7 @@ import { TextboxWithInfo } from "./";
 
 export default {
   component: TextboxWithInfo,
-  args: { title: "記事タイトル" },
+  args: { title: "シナリオタイトル" },
 } as Meta<typeof TextboxWithInfo>;
 
 type Story = StoryObj<typeof TextboxWithInfo>;

@@ -3,7 +3,7 @@ import { TextareaWithInfo } from "./";
 
 export default {
   component: TextareaWithInfo,
-  args: { title: "記事本文" },
+  args: { title: "シナリオ本文" },
 } as Meta<typeof TextareaWithInfo>;
 
 type Story = StoryObj<typeof TextareaWithInfo>;

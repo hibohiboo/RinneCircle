@@ -6,7 +6,7 @@ const { FullProps } = composeStories(stories);
 
 test("TextboxWithInfo", async () => {
   render(<FullProps />);
-  expect(screen.getByRole("textbox")).toHaveAccessibleName("記事タイトル");
+  expect(screen.getByRole("textbox")).toHaveAccessibleName("シナリオタイトル");
   expect(screen.getByRole("textbox")).toHaveAccessibleDescription(
     "半角英数64文字以内で入力してください",
   );
@@ -17,7 +17,7 @@ test("TextboxWithInfo", async () => {
 
 test("TextboxWithInfo", async () => {
   const args = {
-    title: "記事タイトル",
+    title: "シナリオタイトル",
     info: "0 / 64",
     description: "半角英数64文字以内で入力してください",
     error: "不正な文字が含まれています",

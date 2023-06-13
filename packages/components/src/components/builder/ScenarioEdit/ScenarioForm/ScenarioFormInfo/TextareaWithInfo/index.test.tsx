@@ -6,7 +6,7 @@ const { FullProps } = composeStories(stories);
 
 test("TextareaWithInfo", async () => {
   render(<FullProps />);
-  expect(screen.getByRole("textbox")).toHaveAccessibleName("記事本文");
+  expect(screen.getByRole("textbox")).toHaveAccessibleName("シナリオ本文");
   expect(screen.getByRole("textbox")).toHaveAccessibleDescription(
     "半角英数64文字以内で入力してください",
   );

@@ -11,7 +11,7 @@ type Props<T extends FieldValues = ScenarioInputSchema> = {
   defaultImageUrl?: string | null;
   error?: string;
   onChangeImage: (event: ChangeEvent<HTMLInputElement>) => void;
-  imageUrl: string;
+  imageUrl?: string;
 };
 
 export const PostFormHeroImage = (props: Props) => {
