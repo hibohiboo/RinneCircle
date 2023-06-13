@@ -27,7 +27,7 @@ type Props<T extends FieldValues = ScenarioInputSchema> = {
   onChangeImage?: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const PostForm = (props: Props) => {
+export const ScenarioForm = (props: Props) => {
   const {
     register,
     handleSubmit,

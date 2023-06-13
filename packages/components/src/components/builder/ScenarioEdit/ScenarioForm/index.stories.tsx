@@ -2,10 +2,10 @@ import { PCStory } from "@/tests/storybook";
 import { expect } from "@storybook/jest";
 import { Meta, StoryObj } from "@storybook/react";
 import { userEvent as user, waitFor, within } from "@storybook/testing-library";
-import { PostForm } from "./";
+import { ScenarioForm } from "./";
 
 export default {
-  component: PostForm,
+  component: ScenarioForm,
   decorators: [],
   parameters: {
     ...PCStory.parameters,
@@ -17,9 +17,9 @@ export default {
     onClickDelete: () => {},
     onChangeImage: () => {},
   },
-} as Meta<typeof PostForm>;
+} as Meta<typeof ScenarioForm>;
 
-type Story = StoryObj<typeof PostForm>;
+type Story = StoryObj<typeof ScenarioForm>;
 
 export const Default: Story = {};
 
