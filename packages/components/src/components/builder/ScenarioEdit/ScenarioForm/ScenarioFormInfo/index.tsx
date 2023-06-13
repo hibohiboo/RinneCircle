@@ -5,11 +5,13 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 import styles from "./styles.module.css";
-import { ScenarioInput } from "@rinne-circle/backend";
+
 import { TextboxWithInfo } from "./TextboxWithInfo";
 import { WatchCounter } from "../WatchCounter";
+import { TextareaWithInfo } from "./TextareaWithInfo";
+import { ScenarioDetailInput } from "@/domain/scenario/types";
 
-type Props<T extends FieldValues = ScenarioInput> = {
+type Props<T extends FieldValues = ScenarioDetailInput> = {
   register: UseFormRegister<T>;
   control: Control<T>;
   errors: FieldErrors<T>;
