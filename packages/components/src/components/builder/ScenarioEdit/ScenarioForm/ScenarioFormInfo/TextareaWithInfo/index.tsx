@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { ComponentProps, forwardRef, ReactNode, useId } from "react";
 import styles from "./styles.module.css";
-import { DescriptionMessage } from "@/components/common/atoms/DescriptionMessage";
-import { ErrorMessage } from "@/components/common/atoms/ErrorMessage";
-import { Textarea } from "@/components/common/atoms/Textarea";
+import { DescriptionMessage } from "@rinne-components/components/common/atoms/DescriptionMessage";
+import { ErrorMessage } from "@rinne-components/components/common/atoms/ErrorMessage";
+import { Textarea } from "@rinne-components/components/common/atoms/Textarea";
 
 type Props = ComponentProps<typeof Textarea> & {
   title: string;

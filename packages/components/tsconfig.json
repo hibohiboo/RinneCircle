@@ -21,7 +21,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@rinne-components/*": ["./src/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

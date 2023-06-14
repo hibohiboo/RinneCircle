@@ -9,7 +9,7 @@ import styles from "./styles.module.css";
 import { TextboxWithInfo } from "./TextboxWithInfo";
 import { WatchCounter } from "../WatchCounter";
 import { TextareaWithInfo } from "./TextareaWithInfo";
-import { ScenarioInputSchema } from "@/domain/scenario/schema";
+import { ScenarioInputSchema } from "@rinne-components/domain/scenario/schema";
 
 type Props<T extends FieldValues = ScenarioInputSchema> = {
   register: UseFormRegister<T>;

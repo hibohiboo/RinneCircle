@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { ComponentProps, forwardRef, ReactNode, useId } from "react";
 import styles from "./styles.module.css";
-import { Textbox } from "@/components/common/atoms/Textbox";
-import { DescriptionMessage } from "@/components/common/atoms/DescriptionMessage";
-import { ErrorMessage } from "@/components/common/atoms/ErrorMessage";
+import { Textbox } from "@rinne-components/components/common/atoms/Textbox";
+import { DescriptionMessage } from "@rinne-components/components/common/atoms/DescriptionMessage";
+import { ErrorMessage } from "@rinne-components/components/common/atoms/ErrorMessage";
 
 type Props = ComponentProps<typeof Textbox> & {
   title: string;

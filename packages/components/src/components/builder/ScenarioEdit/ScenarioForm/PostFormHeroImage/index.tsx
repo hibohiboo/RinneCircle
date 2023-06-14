@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { FieldValues, Path } from "react-hook-form";
 import ImageIcon from "./assets/image.svg";
 import styles from "./styles.module.css";
-import { ScenarioInputSchema } from "@/domain/scenario/schema";
-import { InputFileButton } from "@/components/common/atoms/InputFileButton";
+import { ScenarioInputSchema } from "@rinne-components/domain/scenario/schema";
+import { InputFileButton } from "@rinne-components/components/common/atoms/InputFileButton";
 import { ChangeEvent } from "react";
 
 type Props<T extends FieldValues = ScenarioInputSchema> = {

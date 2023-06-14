@@ -1,4 +1,4 @@
-import { PCStory, SPStory } from "@/tests/storybook";
+import { PCStory, SPStory } from "@rinne-components/tests/storybook";
 import { Meta, StoryObj } from "@storybook/react";
 import { RinneBuilderTop } from ".";
 

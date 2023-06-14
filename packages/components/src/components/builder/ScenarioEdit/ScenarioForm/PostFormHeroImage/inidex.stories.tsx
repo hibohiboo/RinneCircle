@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import { PostFormHeroImage } from "./";
-import { ScenarioInputSchema } from "@/domain/scenario/schema";
+import { ScenarioInputSchema } from "@rinne-components/domain/scenario/schema";
 
 function TestComponent() {
   const {

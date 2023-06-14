@@ -16,7 +16,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": path.join(__dirname, "../../packages/components/src"),
+      "@rinne-components": path.join(
+        __dirname,
+        "../../packages/components/src",
+      ),
     },
   },
 });

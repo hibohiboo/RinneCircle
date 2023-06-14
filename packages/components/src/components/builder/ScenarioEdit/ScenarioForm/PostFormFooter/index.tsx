@@ -1,9 +1,9 @@
 import { Control, UseFormRegister, useWatch } from "react-hook-form";
 import styles from "./styles.module.css";
-import { Button } from "@/components/common/atoms/Button";
-import { ContentFooter } from "@/components/common/molecules/ContentFooter";
-import { Switch } from "@/components/common/atoms/Switch";
-import { ScenarioInputSchema } from "@/domain/scenario/schema";
+import { Button } from "@rinne-components/components/common/atoms/Button";
+import { ContentFooter } from "@rinne-components/components/common/molecules/ContentFooter";
+import { Switch } from "@rinne-components/components/common/atoms/Switch";
+import { ScenarioInputSchema } from "@rinne-components/domain/scenario/schema";
 
 const SaveButton = ({
   name,

@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     // viteのホットリロードのために、/で始める必要がある。
-    alias: [{ find: "@", replacement: "/src" }],
+    alias: [{ find: "@rinne-components", replacement: "/src" }],
   },
 });

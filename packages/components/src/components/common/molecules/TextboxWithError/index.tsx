@@ -1,5 +1,5 @@
-import { ErrorMessage } from "@/components/common/atoms/ErrorMessage";
-import { Textbox } from "@/components/common/atoms/Textbox";
+import { ErrorMessage } from "@rinne-components/components/common/atoms/ErrorMessage";
+import { Textbox } from "@rinne-components/components/common/atoms/Textbox";
 import { ComponentProps, forwardRef, useId } from "react";
 import styles from "./styles.module.css";
 

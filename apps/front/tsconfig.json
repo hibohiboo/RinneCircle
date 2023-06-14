@@ -20,7 +20,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["../../packages/components/src/*"]
+      "@rinne-components/*": ["../../packages/components/src/*"]
     }
   },
   "include": ["src"],

@@ -13,7 +13,7 @@ import { PostFormHeroImage } from "./PostFormHeroImage";
 import {
   ScenarioInputSchema,
   ScenarioInputFormSchema,
-} from "@/domain/scenario/schema";
+} from "@rinne-components/domain/scenario/schema";
 import { ChangeEvent } from "react";
 
 type Props<T extends FieldValues = ScenarioInputSchema> = {

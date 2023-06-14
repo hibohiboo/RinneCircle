@@ -1,5 +1,5 @@
-import { Button } from "@/components/common/atoms/Button";
-import { TextboxWithError } from "@/components/common/molecules/TextboxWithError";
+import { Button } from "@rinne-components/components/common/atoms/Button";
+import { TextboxWithError } from "@rinne-components/components/common/molecules/TextboxWithError";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import styles from "./styles.module.css";

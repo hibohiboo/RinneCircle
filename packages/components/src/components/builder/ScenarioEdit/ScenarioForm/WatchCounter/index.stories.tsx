@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStoryObj } from "@storybook/react";
 import { useForm } from "react-hook-form";
 import { WatchCounter } from "./";
-import { Textbox } from "@/components/common/atoms/Textbox";
+import { Textbox } from "@rinne-components/components/common/atoms/Textbox";
 
 export function TestComponent({ text = "" }: { text?: string }) {
   const { register, control } = useForm({ defaultValues: { text } });

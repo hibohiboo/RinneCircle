@@ -1,4 +1,4 @@
-import { PCStory } from "@/tests/storybook";
+import { PCStory } from "@rinne-components/tests/storybook";
 import { expect } from "@storybook/jest";
 import { Meta, StoryObj } from "@storybook/react";
 import { userEvent as user, waitFor, within } from "@storybook/testing-library";
