@@ -1,6 +1,7 @@
 .footer {
   height: 160px;
   background-color: var(--dark-navy);
+  font-size: 62.5%;
 }
 
 .copyright {
