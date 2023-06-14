@@ -6,7 +6,7 @@ import { useDrawerMenu } from "./useDrawerMenu";
 import { LoginUser } from "./LoginUser";
 
 export const Header = memo(function HeaderBase() {
-  const { menuRef, isOpen, handleCloseMenu, handleOpenMenu } = useDrawerMenu();
+  const { handleCloseMenu } = useDrawerMenu();
   return (
     <header className={styles.header}>
       <Heading />
