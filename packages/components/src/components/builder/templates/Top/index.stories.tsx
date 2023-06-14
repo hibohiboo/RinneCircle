@@ -1,8 +1,13 @@
-import { PCStory, SPStory } from "@rinne-components/tests/storybook";
+import {
+  BasicLayoutDecorator,
+  PCStory,
+  SPStory,
+} from "@rinne-components/tests/storybook";
 import { Meta, StoryObj } from "@storybook/react";
 import { RinneBuilderTop } from ".";
 
 export default {
+  decorators: [BasicLayoutDecorator],
   component: RinneBuilderTop,
   parameters: {
     msw: { handlers: [] },

@@ -1,4 +1,12 @@
+import { BasicLayout } from "@rinne-components/components/common/layouts/BasicLayout";
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
+import { Args, PartialStoryFn } from "@storybook/csf";
+import { ReactRenderer } from "@storybook/react";
+import { MemoryRouter } from "react-router-dom";
+
+export const BasicLayoutDecorator = (
+  Story: PartialStoryFn<ReactRenderer, Args>,
+) => <MemoryRouter>{BasicLayout(<Story />)}</MemoryRouter>;
 
 export const SPStory = {
   parameters: {
