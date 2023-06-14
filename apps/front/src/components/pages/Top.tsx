@@ -1,16 +1,29 @@
-import { RinneBuilderTop } from "@rinne-circle/components";
+import { BasicLayout, RinneBuilderTop } from "@rinne-circle/components";
 import { Link } from "react-router-dom";
 
 export default function Top() {
-  return (
+  return BasicLayout(
     <RinneBuilderTop>
-      <div>
-        ないものは作ればいい。
-        <a href="https://github.com/hibohiboo/RinneCircle" target="_blank">
-          ♾
-        </a>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "80vw",
+          height: "80vh",
+        }}
+      >
+        <div>
+          <div style={{}}>
+            ないものは作ればいい。
+            <a href="https://github.com/hibohiboo/RinneCircle" target="_blank">
+              ♾
+            </a>
+          </div>
+          <div>
+            <Link to="/scenario/create">シナリオ作成</Link>
+          </div>
+        </div>{" "}
       </div>
-      <Link to="/scenario/create">シナリオ作成</Link>
-    </RinneBuilderTop>
+    </RinneBuilderTop>,
   );
 }
