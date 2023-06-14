@@ -21,7 +21,6 @@ export function useScenarioEdit({ id }: { id: string }) {
   };
 
   const handleSave = async (input: ScenarioInputSchema) => {
-    const status = input.published ? "公開" : "保存";
     try {
       const body = JSON.stringify({
         id,
