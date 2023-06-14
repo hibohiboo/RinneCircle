@@ -49,6 +49,10 @@ export const SIDEBAR: Sidebar = {
       { text: "REST", link: `${BASE_PATH}/rinne-openapi/index.html` },
       { text: "GraphQL", link: `${BASE_PATH}/rinne-graphql/index.html` },
       {
+        text: "Jestレポート - UIコンポーネント",
+        link: `${BASE_PATH}/jest-reports-components/jest.html`,
+      },
+      {
         text: "Sample - StoryBook",
         link: `${BASE_PATH}/storybook-static/index.html`,
       },

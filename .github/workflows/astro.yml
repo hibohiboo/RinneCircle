@@ -97,13 +97,21 @@ jobs:
         run: pnpm run build-storybook
         working-directory: packages/components
 
-      # jest reports 作成
-      - name: Jest Unit Test
+      # jest reports 作成 Sample
+      - name: Jest Unit Test Sample
         run: pnpm run test
         working-directory: packages/ui_components
       - name: move jest report
         run: pnpm run mv-jest-reports
         working-directory: packages/ui_components
+
+      # jest reports 作成 UI コンポーネント
+      - name: Jest Unit Test Component
+        run: pnpm run test
+        working-directory: packages/components
+      - name: move jest report Component
+        run: pnpm run mv-jest-reports
+        working-directory: packages/components
 
       # GraphQL Document 作成
       - name: GraphQL Schema Modules
