@@ -30,7 +30,7 @@ export function useScenarioEdit({ id }: { id: string }) {
         path: "",
         imageUl: "",
       });
-      await fetch("/api/scenario", {
+      await fetch("/v1/api/scenario", {
         method: "PUT",
         headers: {
           "content-type": "application/json",
