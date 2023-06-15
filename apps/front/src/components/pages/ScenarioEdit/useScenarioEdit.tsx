@@ -2,10 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAlertDialogAction } from "./AlertDialog/hooks";
 import { ScenarioInputSchema } from "@rinne-components/index";
+import { useScenario } from "../../../state/atoms";
 
 export function useScenarioEdit({ id }: { id: string }) {
   const navigate = useNavigate();
   const [action, setAction] = useState<"delete" | "save">();
+  const [scenario] = useScenario();
 
   const { showAlertDialog, hideAlertDialog } = useAlertDialogAction();
 
@@ -74,5 +76,6 @@ export function useScenarioEdit({ id }: { id: string }) {
     onClickDelete,
     onValid,
     onInvalid,
+    scenario,
   };
 }
