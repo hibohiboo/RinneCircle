@@ -8,7 +8,11 @@
   "scripts": {
     "dev": "redocly preview-docs",
     "test": "redocly lint",
-    "bundle": "redocly bundle -o dist/bundle.yaml",
-    "build": "redocly build-docs core@v1  --disableGoogleFont -o ../astro/public/rinne-openapi/index.html"
+    "bundle": "redocly bundle -o dist/bundle.json",
+    "build": "redocly build-docs core@v1  --disableGoogleFont -o ../astro/public/rinne-openapi/index.html",
+    "generate": "stepci generate ./dist/bundle.json ./dist/workflow.yml"
+  },
+  "devDependencies": {
+    "stepci": "^2.6.6"
   }
 }
