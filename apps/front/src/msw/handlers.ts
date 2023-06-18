@@ -2,7 +2,7 @@
 import { rest } from "msw";
 
 export const handlers = [
-  rest.put("/v1/api/scenario", (req, res, ctx) => {
+  rest.put("/v1/api/scenario", (_, res, ctx) => {
     return res(ctx.status(200));
   }),
   rest.get(`/v1/api/scenario`, (req, res, ctx) => {

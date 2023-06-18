@@ -31,6 +31,8 @@ B --> C[リプレイ]
 
 </pre>
 
+![](/RinneCircle/figma/play-image.png)
+
 ---
 
 ## やりたいこと
