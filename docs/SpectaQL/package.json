@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "spectaql": "^2.0.9"
+    "spectaql": "^2.1.1"
   }
 }
