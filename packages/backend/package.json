@@ -13,8 +13,8 @@
     "date-fns": "^2.30.0"
   },
   "devDependencies": {
-    "@types/aws-lambda": "^8.10.117",
-    "@types/node": "^20.3.0",
+    "@types/aws-lambda": "^8.10.119",
+    "@types/node": "^20.3.1",
     "cross-env": "^7.0.3",
     "liquidless": "^1.2.3",
     "stepci": "^2.6.6",
