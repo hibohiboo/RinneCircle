@@ -7,6 +7,7 @@
     "packages/*"
   ],
   "scripts": {
+    "pnpm:devPreinstall": "echo githooks setting && git config --local core.hooksPath .githooks",
     "build": "turbo run build",
     "build-front": "turbo run build --filter=./apps/front",
     "dev": "turbo run dev --filter=./apps/front",
@@ -16,9 +17,9 @@
     "ncu": "npx pnpm up"
   },
   "devDependencies": {
-    "eslint": "^8.43.0",
+    "eslint": "^8.45.0",
     "eslint-config-turbo": "latest",
-    "turbo": "^1.10.3"
+    "turbo": "^1.10.9"
   },
-  "packageManager": "pnpm@8.6.3"
+  "packageManager": "pnpm@8.6.10"
 }
